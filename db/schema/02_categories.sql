@@ -6,8 +6,8 @@ CREATE TABLE categories (
 );
 
 INSERT INTO categories (name)
-VALUES('uncategorized');
-VALUES('Books');
-VALUES('Films');
-VALUES('Foods');
-VALUES('Products');
+VALUES('uncategorized'),
+      ('Books'),
+      ('Films'),
+      ('Foods'),
+      ('Products');
