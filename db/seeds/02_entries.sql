@@ -5,7 +5,7 @@ INSERT INTO entries (
   due_date,
   completed_date,
   current_status,
-  name
+  title,
   description)
   VALUES(
     1,
