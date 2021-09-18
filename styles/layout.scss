@@ -1,9 +1,84 @@
 // See: https://sass-lang.com/
 
+@charset "UTF-8";
+$font-stack: Source Sans Pro, sans-serif;
+$primary-color: #2699FB;
+
 body {
   background-color: #EEE;
 
   h1 {
     color: #244751;
   }
+}
+
+.container {
+	background-color: #FFFFFF;
+	// width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	border-bottom-width: 0px;
+	padding-left: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+.primary_header {
+  top: 0;
+	width: 100%;
+	background-color: $primary-color;
+	padding-top: 30px;
+	padding-bottom: 10px;
+  font-size: 12px;
+	clear: left;
+	// border-bottom: 2px solid #2C9AB7;
+}
+.title {
+  margin-bottom: 2px;
+	font-weight: bold;
+	font-style: normal;
+	font-family: $font-stack;
+  font-size: 16px;
+	text-align: center;
+	color: #FFFFFF;
+	letter-spacing: 1px;
+}
+.footer {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	clear: left;
+  font-size: 24px;
+	background-color: $primary-color;
+}
+.container .footer ul {
+	margin-top: 0%;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 15px;
+	padding-left: 0px;
+	// width: 100%;
+}
+.footer ul li {
+	list-style: none;
+	float: left;
+	margin-right: auto;
+	margin-top: 0px;
+	font-family: $font-stack;
+	font-weight: normal;
+	color: #FFFFFF;
+	letter-spacing: 1px;
+	margin-left: auto;
+	text-align: center;
+	width: 16%;
+	transition: all 0.3s linear;
+}
+.footer ul li:hover {
+	color: #717070;
+	cursor: pointer;
 }
