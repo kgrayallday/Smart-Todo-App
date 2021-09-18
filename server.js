@@ -9,8 +9,11 @@ const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require("morgan");
+const cookieSession = require("cookie-session");
 
-const db = require('./lib/db.js');
+const db = require("./lib/db.js");
+
+const userQueries = require('./lib/users-queries');
 
 // // PG database client/connection setup
 // const { Pool } = require("pg");
@@ -34,34 +37,15 @@ app.use(
     outputStyle: "expanded",
   })
 );
+
 app.use(express.static("public"));
 
-// Separated Routes for each Resource
-// Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
 
-
-const usersRouter = require('./routes/users');
-
-app.use('/', userRouter);
-
-// Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
-// Note: mount other resources here, using the same pattern above
-
-// Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
-
-// app.get("/", (req, res) => {
-//   res.render("index");
-// });
-
-
+const userRouter = require('./routes/users');
+app.use("/login", userRouter);
 
 app.listen(8080, () => {
   console.log(`Example app listening on port ${8080}`);
 });
+
+//grant all on users to labber;
