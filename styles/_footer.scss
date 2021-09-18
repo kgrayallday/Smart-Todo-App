@@ -1,0 +1,41 @@
+$primary-color: #2699FB;
+
+.footer {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	clear: left;
+  font-size: 24px;
+	background-color: $primary-color;
+}
+.footer ul {
+	margin-top: 0%;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 15px;
+	padding-left: 0px;
+	// width: 100%;
+}
+.footer ul li {
+	list-style: none;
+	float: left;
+	margin-right: auto;
+	margin-top: 0px;
+	// font-family: $font-stack;
+	font-weight: normal;
+	color: #FFFFFF;
+	letter-spacing: 1px;
+	margin-left: auto;
+	text-align: center;
+	width: 16%;
+	transition: all 0.3s linear;
+}
+.footer ul li:hover {
+	color: #717070;
+	cursor: pointer;
+}
