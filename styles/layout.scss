@@ -3,12 +3,12 @@
 @charset 'UTF-8';
 @import 'footer', 'header';
 
-// $primary-color: #2699FB;
-// $font-stack: Source Sans Pro, sans-serif;
+$primary-color: #2699FB;
+$background: #EEE;
+$font-stack: Source Sans Pro, sans-serif;
 
 body {
-  background-color: #EEE;
-
+  background-color: $background;
   h1 {
     color: #244751;
   }
@@ -24,4 +24,63 @@ body {
 	padding-top: 0px;
 	padding-right: 0px;
 	padding-bottom: 0px;
+}
+
+.categories {
+  display: flex;
+  padding-top: 60px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: auto;
+}
+
+.categories button {
+  margin: 15px;
+  border-radius: 36px;
+  padding: 14px;
+  width: 75%;
+  height: 60px;
+  font-size: 14px;
+}
+
+section.new-task {
+  bottom: 78px;
+  position: fixed;
+  width: 100%;
+}
+
+.new-task form {
+  margin-right: auto;
+  margin-left: auto;
+  width: 90%;
+}
+
+.new-task textarea {
+  border-radius: 24px;
+  background-color: $background;
+  resize: none;
+  width: 87%;
+  height: 48px;
+  padding-top: 15px;
+  padding-left: 30px;
+  margin: auto;
+}
+
+::placeholder {
+  color: $primary-color;
+  font: $font-stack;
+  opacity: 0.7;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.new-task button {
+  padding-top: 12px;
+  padding-bottom: 6px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border: none;
+  font-size: 48px;
+  color: $primary-color;
 }
