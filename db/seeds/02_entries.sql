@@ -1,7 +1,6 @@
 INSERT INTO entries (
   catergory_id,
   user_id,
-  created_date,
   due_date,
   completed_date,
   current_status,
@@ -10,7 +9,6 @@ INSERT INTO entries (
   VALUES(
     1,
     1,
-    '2021-09-17 12:30:45.25+00',
     null,
     '2021-09-24 18:30:45.25+00',
     0,
@@ -21,7 +19,6 @@ INSERT INTO entries (
   VALUES(
     2,
     2,
-    '2021-09-18 14:11:23.20+00',
     null,
     '2021-09-20 14:11:23.20+00',
     0,
@@ -32,7 +29,6 @@ INSERT INTO entries (
     VALUES(
     3,
     3,
-    '2021-09-18 16:31:11.11+00',
     null,
     '2021-09-20 14:11:23.20+00',
     0,
