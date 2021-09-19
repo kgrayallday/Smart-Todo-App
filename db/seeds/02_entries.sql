@@ -4,7 +4,7 @@ INSERT INTO entries (
   created_date,
   due_date,
   completed_date,
-  statuses,
+  statuses_id,
   title,
   description)
   VALUES(1, 1, '2021-08-24 18:30:45.25+00', null, '2021-09-24 18:30:45.25+00', 1, 'Have Midterm Complete', 'needs to be complete my 10am Friday morning'),
