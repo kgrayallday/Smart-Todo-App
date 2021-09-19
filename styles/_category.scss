@@ -67,6 +67,16 @@ $btn-color: #3895ff;
   top: 0;
 }
 .drop-menu > button {
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: auto;
+  padding-right: auto;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.drop-menu form button {
+  padding-left: auto;
+  padding-right: auto;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
 }
