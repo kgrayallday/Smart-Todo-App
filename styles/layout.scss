@@ -8,12 +8,8 @@ $background: #EEE;
 $font-stack: Source Sans Pro, sans-serif;
 
 body {
+  margin-top: 70px;
   background-color: $background;
-  h1 {
-    color: #244751;
-  }
-  display: flex;
-  flex-direction: column;
 }
 main.container {
   display: flex;
@@ -21,7 +17,6 @@ main.container {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 1.5em;
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -55,7 +50,6 @@ main.container {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 17vh;
   width: 100%;
 }
 .new-task input {
