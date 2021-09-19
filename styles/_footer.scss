@@ -35,7 +35,12 @@ $primary-color: #2699FB;
 	width: 16%;
 	transition: all 0.3s linear;
 }
-.footer ul li:hover {
+.footer ul li button {
+  border: none;
+  background: none;
+  color: #FFF;
+}
+.footer ul li button:hover {
 	color: #717070;
 	cursor: pointer;
 }
