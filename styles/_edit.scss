@@ -1,0 +1,43 @@
+$font-stack: Source Sans Pro, sans-serif;
+$primary-color: #2699FB;
+
+.todo-edit {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30vh;
+  width: 100%;
+}
+.todo-edit > input {
+  background: #EEE;
+  border-left: hidden;
+  border-right: hidden;
+  border-top: hidden;
+  border-bottom: 3px solid rgba(38, 153, 251, .5);
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  outline: none;
+
+  background-image: url(https://cdn3.iconfinder.com/data/icons/glypho-free/64/pen-checkbox-20.png);
+  background-position: 10px;
+  background-repeat: no-repeat;
+  text-indent: 20px;
+  padding: 15px 5px 10px 20px;
+  transition: all 0.2s;
+}
+.todo-edit > button {
+  background: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  height: 48px;
+  width: 80%;
+  margin-top: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+}
