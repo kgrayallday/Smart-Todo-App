@@ -14,7 +14,7 @@ const getUserFromId = (id) => {
     .query(userInfoQuery, id)
     .then(res => {
       console.log('⭐️ res.rows in getUserFromId query: ', res.rows);
-      return res.rows;
+      return res.rows[0];
     })
     .catch(err => err.message);
 };
