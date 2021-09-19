@@ -32,6 +32,11 @@ $btn-color: #3895ff;
 .task-detail > p {
   flex-grow: 1;
 }
+.task-name {
+  font-weight: bold;
+	font-style: normal;
+  font-size: 16px;
+}
 .task-detail > button {
   border: none;
   margin: 15px;
