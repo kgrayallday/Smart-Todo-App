@@ -3,4 +3,8 @@ public/styles
 .env
 *.log
 *.sqlite3
+<<<<<<< HEAD
 resources
+=======
+.DS_Store
+>>>>>>> 20194452ff8c2b7ae11cc3163bd7ea18163b727d

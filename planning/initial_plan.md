@@ -26,6 +26,7 @@
 |  GET   |/                     | Home/Root                 |
 |  GET   |/login                | login page                |
 |  POST  |/login/:id            | post log in credentials   |
+<<<<<<< HEAD
 |  POST  |/logout               | logs user out             |
 |  GET   |/profile              | view user profile         |
 |  POST  |/profile/:id/edit     | view user profile         |
@@ -35,3 +36,25 @@
 |  POST  |/todo/:cat/:id/delete | delete todo               |
 |  GET   |/todo/:category       | list todo's from category |
 |  GET   |/todo/:cat/:id        | info on todo item         |
+=======
+|  POST  |/profile/logout       | logs user out             |
+|  GET   |/profile/:id          | view user profile         |
+|  POST  |/profile/:id/edit     | view user profile         |
+|  GET   |/todo                 | main page of all cats     | 
+|  POST  |/todo/:id             | individual todo           |
+|  GET   |/todo/:id             | individual todo           |
+|  POST  |/todo/:id/edit        | edits todo                |
+|  POST  |/todo/:id/delete      | delete todo               |
+|  GET   |/todo/:category       | list todo's from category |
+|  GET   |/todo/:cat/:id        | info on todo item         |
+
+## Dev Roles
+  ### Tommy
+  - Front-End HTMl/SCSS 
+
+  ### Kyle 
+  - SQL and database interface 
+
+  ### Michael
+  - Back-End API and Express
+>>>>>>> 20194452ff8c2b7ae11cc3163bd7ea18163b727d
