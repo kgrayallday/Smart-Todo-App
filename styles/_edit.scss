@@ -27,6 +27,35 @@ $primary-color: #2699FB;
   padding: 15px 5px 10px 20px;
   transition: all 0.2s;
 }
+.todo-edit > select {
+  margin-top: 15px;
+  background: #EEE;
+  border-left: hidden;
+  border-right: hidden;
+  border-top: hidden;
+  border-bottom: 3px solid rgba(38, 153, 251, .5);
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  outline: none;
+  text-indent: 15px;
+  padding: 15px 5px 10px 20px;
+  color: $primary-color;
+  font: $font-stack;
+  opacity: 0.7;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.todo-edit > select > option {
+  color: $primary-color;
+  font: $font-stack;
+  opacity: 0.7;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
 .todo-edit > button {
   background: $primary-color;
   color: white;
