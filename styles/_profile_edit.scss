@@ -4,7 +4,7 @@ $primary-color: #2699FB;
 .profile-edit {
   display: flex;
   flex-direction: column;
-  margin-top: 30vh;
+  margin-top: 20vh;
   width: 100%;
 }
 .profile-edit > input {
@@ -18,9 +18,9 @@ $primary-color: #2699FB;
   width: 80%;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
   outline: none;
-
-  // background-image: url(https://cdn3.iconfinder.com/data/icons/glypho-free/64/pen-checkbox-20.png);
   background-position: 10px;
   background-repeat: no-repeat;
   text-indent: 20px;
