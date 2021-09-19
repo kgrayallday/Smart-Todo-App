@@ -32,6 +32,13 @@ $btn-color: #3895ff;
 .task-detail > p {
   flex-grow: 1;
 }
+.task-detail > button {
+  border: none;
+  margin: 15px;
+}
+.task-detail > button:hover {
+  color: #3895ff;
+}
 .dropdown {
   margin: 15px;
   cursor: pointer;
@@ -57,27 +64,4 @@ $btn-color: #3895ff;
 .drop-menu > button {
   padding-left: 24px;
   padding-right: 24px;
-}
-.task > footer {
-  display: flex;
-  border-top-style: solid;
-  border-right-style: hidden;
-  border-left-style: hidden;
-  border-bottom-style: hidden;
-  border-width: thin;
-  align-items: center;
-  padding-left: 1.5em;
-  padding-right: 1.5em;
-  width: 100%;
-  font-size: 16px;
-}
-.task-footer > button {
-  margin: 15px;
-  border: none;
-}
-.task-footer > p {
-  flex-grow: 1;
-}
-.task-footer > button:hover {
-  color: #3895ff;
 }
