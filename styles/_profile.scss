@@ -1,0 +1,45 @@
+$font-stack: Source Sans Pro, sans-serif;
+$primary-color: #2699FB;
+
+.profile-title {
+  font: $font-stack;
+  color: black;
+}
+.edit-profile {
+  background: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  height: 48px;
+  width: 80%;
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+}
+.container ul {
+  margin-top: 10vh;
+}
+.container ul li {
+  list-style: none;
+	margin-right: auto;
+	margin-top: 15px;
+	font-weight: normal;
+	letter-spacing: 1px;
+	margin-left: auto;
+	text-align: left;
+	transition: all 0.3s linear;
+}
+.footer-profile button{
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  font-size: 24px;
+  background-color: #FF5454;
+  border: none;
+  color: #FFFF;
+}

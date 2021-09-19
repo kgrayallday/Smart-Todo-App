@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SMART TO-DO</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <!-- EXTERNAL CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    <!-- EXTERNAL JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <%- include('partials/_header') %>
+    <main class='container'>
+      <h1 class='profile-title'>PERSONAL INFOMATION</h1>
+      <ul>
+        <li>Created on: 31/01/2021</li>
+        <li>Email: email@example.com</li>
+        <li>Tasks Completed: 123</li>
+        <li>Unfinished Tasks: 123</li>
+      </ul>
+      <button class='edit-profile' type='submit' onClick='pedit()'>EDIT</button>
+    </main>
+    <footer class='footer-profile'>
+      <form class='logout' action='/logout' method='post'>
+        <button type='submit'>LOGOUT</button>
+      </form>
+    </footer>
+  </body>
+</html>
