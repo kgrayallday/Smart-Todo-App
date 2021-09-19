@@ -42,7 +42,14 @@ app.use(express.static("public"));
 
 
 const loginRouter = require('./routes/login');
+const logoutRouter = require('./routes/logout');
+const profileRouter = require('./routes/profile');
+const todoRouter = require('./routes/todo');
+
 app.use("/login", loginRouter);
+app.use("./logout", logoutRouter);
+app.use("./profile", profileRouter);
+app.use("./todo", todoRouter);
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

@@ -28,7 +28,12 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const user_id =
+  const user_id = req.session.userID;
+  const due_date = req.body.due_date;
+  const completed_date = req.body.completed_date;
+  const name = req.body.name;
+  const description = req.body.description;
+  todoQueries.addToDos(user_id, due_date, completed_date, name, description)
 });
 
 // router.get("/", (req, res) => {

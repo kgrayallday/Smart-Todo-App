@@ -24,3 +24,5 @@ router.post('/', (req, res) => {
   req.session.userID = null;
   res.redirect('/login');
 });
+
+module.exports = router;
