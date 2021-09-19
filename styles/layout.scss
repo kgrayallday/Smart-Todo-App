@@ -67,14 +67,13 @@ main.container {
   width: 100%;
 }
 
-.new-task textarea {
+.new-task input {
   flex-shrink: 1;
   border-radius: 24px;
   background-color: $background;
-  resize: none;
+  outline: none;
   width: 100%;
   height: 48px;
-  padding-top: 15px;
   padding-left: 30px;
   margin-left: 15px;
   margin-right: 15px;
