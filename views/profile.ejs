@@ -26,6 +26,11 @@
         <li>Unfinished Tasks: 123</li>
       </ul>
       <button class='edit-profile' type='submit' onClick='pedit()'>EDIT</button>
+      <script>
+        function pedit() {
+          window.location.href='/profile/edit'
+        }
+      </script>
     </main>
     <footer class='footer-profile'>
       <form class='logout' action='/logout' method='post'>
