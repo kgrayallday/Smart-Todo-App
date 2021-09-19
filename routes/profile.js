@@ -21,7 +21,7 @@ const router = express.Router();
 const userQueries = require("../lib/users-queries");
 
 router.get("/", (req, res) => {
-  const ID = req.session.id;
+  const ID = req.session.userID;
   userQueries.getUsersByID(ID).then((response) => {
     res.render("profile", response);
   });

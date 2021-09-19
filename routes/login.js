@@ -32,7 +32,7 @@ router.post("/:id", (req, res) => {
   const profile_url = req.body.profile_url;
   const id = userQueries.addUsers(name, email, password, profile_url);
   //add id to the cookie
-  req.session.ID = id;
+  req.session.userID = id;
 });
 
 // users = (db) => {
