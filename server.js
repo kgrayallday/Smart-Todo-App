@@ -41,11 +41,11 @@ app.use(
 app.use(express.static("public"));
 
 
-const userRouter = require('./routes/users');
-app.use("/login", userRouter);
+const loginRouter = require('./routes/login');
+app.use("/login", loginRouter);
 
-app.listen(8080, () => {
-  console.log(`Example app listening on port ${8080}`);
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`);
 });
 
 //grant all on users to labber;
