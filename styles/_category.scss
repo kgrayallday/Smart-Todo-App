@@ -1,0 +1,82 @@
+$font-stack: Source Sans Pro, sans-serif;
+$primary-color: #2699FB;
+$btn-color: #3895ff;
+
+.category-title {
+  margin: 15px;
+	font-weight: bold;
+	font-style: normal;
+	font-family: $font-stack;
+  font-size: 32px;
+	text-align: center;
+	color: $primary-color;
+	letter-spacing: 0.5px;
+}
+.tasks-container {
+  width: 100%;
+}
+.task {
+  width: 100%;
+  border-style: solid;
+  border-radius: 64px;
+}
+.task:hover {
+  box-shadow: 5px 5px #c8cae3;
+}
+.task-detail {
+  display: flex;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  align-items: center;
+}
+.task-detail > p {
+  flex-grow: 1;
+}
+.task-name {
+  font-weight: bold;
+	font-style: normal;
+  font-size: 16px;
+}
+.task-detail > button {
+  border: none;
+  margin: 15px;
+}
+.task-detail > button:hover {
+  color: #3895ff;
+}
+.dropdown {
+  margin: 15px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+.drop-btn{
+  border: none;
+}
+.drop-btn:hover {
+  color: $btn-color;
+}
+.drop-menu {
+  display: none;
+  position: absolute;
+}
+.dropdown:hover .drop-menu{
+  display: block;
+  position: absolute;
+  right: 100%;
+  top: 0;
+}
+.drop-menu > button {
+  padding-left: auto;
+  padding-right: auto;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.drop-menu form button {
+  padding-left: auto;
+  padding-right: auto;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -17,24 +17,26 @@
   </head>
   <body>
     <%- include('partials/_header') %>
+    <%- include('partials/_back') %>
     <main class='container'>
-      <section class='categories'>
-        <button class='watch-list' onClick='multimedia()'>Multimedia</button>
-        <button class='eat-list'>Food</button>
-        <button class='read-list'>Books</button>
-        <button class='buy-list'>Shopping</button>
-        <button class='misc-list'>Miscellaneous</button>
-        <script>
-          function multimedia() {
-            window.location.href='/category/multimedia'
-          }
-        </script>
-      </section>
-        <form class='new-task' type='POST' action='/todo'>
-          <input placeholder='Add new task'></input>
-          <button type='SUBMIT'><i class="ri-arrow-right-circle-fill"></i></button>
-        </form>
+      <h1 class='profile-title'>PERSONAL INFOMATION</h1>
+      <ul>
+        <li>Created on: 31/01/2021</li>
+        <li>Email: email@example.com</li>
+        <li>Tasks Completed: 123</li>
+        <li>Unfinished Tasks: 123</li>
+      </ul>
+      <button class='edit-profile' onClick='pedit()'>EDIT</button>
+      <script>
+        function pedit() {
+          window.location.href='/profile/edit'
+        }
+      </script>
     </main>
-    <%- include('partials/_footer') %>
+    <footer class='footer-profile'>
+      <form class='logout' action='/logout' method='post'>
+        <button type='submit'>LOGOUT</button>
+      </form>
+    </footer>
   </body>
 </html>

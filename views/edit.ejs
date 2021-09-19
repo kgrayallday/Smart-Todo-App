@@ -17,23 +17,19 @@
   </head>
   <body>
     <%- include('partials/_header') %>
+    <%- include('partials/_back') %>
     <main class='container'>
-      <section class='categories'>
-        <button class='watch-list' onClick='multimedia()'>Multimedia</button>
-        <button class='eat-list'>Food</button>
-        <button class='read-list'>Books</button>
-        <button class='buy-list'>Shopping</button>
-        <button class='misc-list'>Miscellaneous</button>
-        <script>
-          function multimedia() {
-            window.location.href='/category/multimedia'
-          }
-        </script>
-      </section>
-        <form class='new-task' type='POST' action='/todo'>
-          <input placeholder='Add new task'></input>
-          <button type='SUBMIT'><i class="ri-arrow-right-circle-fill"></i></button>
-        </form>
+      <form class='todo-edit' action='/edit' method='post'>
+        <input type='text' id='todo-name' placeholder="ITEM NAME">
+        <select id='category' name='option'>
+          <option disabled selected value>-- SELECT A CATEGORY --</option>
+          <option value="Multimedia">Multimedia</option>
+          <option value="Food">Food</option>
+          <option value="Books">Books</option>
+          <option value="Shopping">Shopping</option>
+        </select>
+        <button type='submit'>EDIT</button>
+      </form>
     </main>
     <%- include('partials/_footer') %>
   </body>

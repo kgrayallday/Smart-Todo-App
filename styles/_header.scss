@@ -1,0 +1,23 @@
+$font-stack: Source Sans Pro, sans-serif;
+$primary-color: #2699FB;
+
+.primary_header {
+  top: 0;
+	width: 100%;
+	background-color: $primary-color;
+	padding-top: 30px;
+	padding-bottom: 10px;
+  font-size: 12px;
+	clear: left;
+	// border-bottom: 2px solid #2C9AB7;
+}
+.title {
+  margin-bottom: 2px;
+	font-weight: bold;
+	font-style: normal;
+	font-family: $font-stack;
+  font-size: 16px;
+	text-align: center;
+	color: #FFFFFF;
+	letter-spacing: 1px;
+}

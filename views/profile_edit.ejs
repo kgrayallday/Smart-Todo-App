@@ -17,23 +17,14 @@
   </head>
   <body>
     <%- include('partials/_header') %>
+    <%- include('partials/_back') %>
     <main class='container'>
-      <section class='categories'>
-        <button class='watch-list' onClick='multimedia()'>Multimedia</button>
-        <button class='eat-list'>Food</button>
-        <button class='read-list'>Books</button>
-        <button class='buy-list'>Shopping</button>
-        <button class='misc-list'>Miscellaneous</button>
-        <script>
-          function multimedia() {
-            window.location.href='/category/multimedia'
-          }
-        </script>
-      </section>
-        <form class='new-task' type='POST' action='/todo'>
-          <input placeholder='Add new task'></input>
-          <button type='SUBMIT'><i class="ri-arrow-right-circle-fill"></i></button>
-        </form>
+      <form class='profile-edit' action='/profile' method='post'>
+        <input type='text' id='fname' placeholder="FIRST NAME">
+        <input type='text' id='lname' placeholder="LAST NAME">
+        <input type='text' id='email' placeholder="EMAIL">
+        <button type='submit'>CONFIRM</button>
+      </form>
     </main>
     <%- include('partials/_footer') %>
   </body>
