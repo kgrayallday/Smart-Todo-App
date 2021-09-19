@@ -5,7 +5,7 @@ CREATE TABLE statuses (
   status VARCHAR(255) NOT NULL
 );
 
-INSERT INTO categories (name)
+INSERT INTO statuses (status)
 VALUES('active'), -- status code 1
       ('completed'), -- status code 2
       ('deleted'); -- status code 3
