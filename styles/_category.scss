@@ -1,0 +1,61 @@
+$font-stack: Source Sans Pro, sans-serif;
+$primary-color: #2699FB;
+
+.category-title {
+  margin: 15px;
+	font-weight: bold;
+	font-style: normal;
+	font-family: $font-stack;
+  font-size: 32px;
+	text-align: center;
+	color: $primary-color;
+	letter-spacing: 1px;
+}
+.tasks-container {
+  width: 100%;
+}
+.task {
+  width: 100%;
+  border-style: solid;
+  border-radius: 64px;
+}
+.task:hover {
+  box-shadow: 5px 5px #c8cae3;
+}
+.task-detail {
+  display: flex;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  align-items: center;
+}
+.task-detail > p {
+  flex-grow: 1;
+}
+.task-detail > i {
+  margin: 15px;
+}
+.task-detail > i:hover {
+  color: #3895ff;
+}
+.task > footer {
+  display: flex;
+  border-top-style: solid;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  border-width: thin;
+  align-items: center;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  width: 100%;
+  font-size: 16px;
+}
+.task-footer > i {
+  margin: 15px;
+}
+.task-footer > p {
+  flex-grow: 1;
+}
+.task-footer > i:hover {
+  color: #3895ff;
+}
