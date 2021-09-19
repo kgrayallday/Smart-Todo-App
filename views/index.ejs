@@ -19,11 +19,16 @@
     <%- include('partials/_header') %>
     <main class='container'>
       <section class='categories'>
-        <button class='watch-list'>Multimedia</button>
+        <button class='watch-list' onClick='multimedia()'>Multimedia</button>
         <button class='eat-list'>Food</button>
         <button class='read-list'>Books</button>
         <button class='buy-list'>Products</button>
         <button class='misc-list'>Miscellaneous</button>
+        <script>
+          function multimedia() {
+            window.location.href='/category'
+          }
+        </script>
       </section>
         <form class='new-task' type='POST' action='/todo'>
           <input placeholder='Add new task'></input>

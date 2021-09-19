@@ -28,8 +28,13 @@
             <div class='dropdown'>
               <button class='drop-btn'><i class="ri-more-2-line"></i></button>
               <div class='drop-menu'>
-                <button class='drop-edit'><i class="ri-edit-fill"></i> Edit</button>
+                <button class='drop-edit' onClick='edit()'><i class="ri-edit-fill"></i> Edit</button>
                 <button class='drop-delete'><i class="ri-delete-bin-6-fill"> </i>Delete</button>
+                <script>
+                  function edit() {
+                    window.location.href="/category/edit"
+                  }
+                </script>
               </div>
             </div>
           </div>
