@@ -1,5 +1,6 @@
 $font-stack: Source Sans Pro, sans-serif;
 $primary-color: #2699FB;
+$btn-color: #3895ff;
 
 .category-title {
   margin: 15px;
@@ -31,11 +32,31 @@ $primary-color: #2699FB;
 .task-detail > p {
   flex-grow: 1;
 }
-.task-detail > i {
+.dropdown {
   margin: 15px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
 }
-.task-detail > i:hover {
-  color: #3895ff;
+.drop-btn{
+  border: none;
+}
+.drop-btn:hover {
+  color: $btn-color;
+}
+.drop-menu {
+  display: none;
+  position: absolute;
+}
+.dropdown:hover .drop-menu{
+  display: block;
+  position: absolute;
+  right: 100%;
+  top: 0;
+}
+.drop-menu > button {
+  padding-left: 24px;
+  padding-right: 24px;
 }
 .task > footer {
   display: flex;
@@ -50,12 +71,13 @@ $primary-color: #2699FB;
   width: 100%;
   font-size: 16px;
 }
-.task-footer > i {
+.task-footer > button {
   margin: 15px;
+  border: none;
 }
 .task-footer > p {
   flex-grow: 1;
 }
-.task-footer > i:hover {
+.task-footer > button:hover {
   color: #3895ff;
 }
