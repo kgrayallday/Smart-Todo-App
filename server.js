@@ -65,13 +65,10 @@ const profileRouter = require("./routes/profile");
 const todoRouter = require("./routes/todo");
 const categoryRouter = require("./routes/category");
 
-app.get('/', (req, res) => {
+app.get('/home', (req, res) => {
     res.render('index');
 });
 
-app.get("/", (req, res) => {
-  res.render('index.ejs');
-});
 app.use("/login", loginRouter);
 app.use("/logout", logoutRouter);
 app.use("/profile", profileRouter);
