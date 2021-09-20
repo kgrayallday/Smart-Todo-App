@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS entries CASCADE;
 CREATE TABLE entries (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  category_id SMALLINT NOT NULL,
+  category_id SMALLINT NOT NULL DEFAULT 1,
   title VARCHAR(255) NOT NULL,
   description TEXT,
   created_date timestamp DEFAULT CURRENT_TIMESTAMP(2),
