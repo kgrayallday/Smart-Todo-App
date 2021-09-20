@@ -15,25 +15,6 @@ const db = require("./lib/db.js");
 
 const userQueries = require("./lib/users-queries");
 
-// app.get("/home", (req, res) => {
-//     res.render("index");
-// });
-
-// app.get("/category/multimedia", (req, res) => {
-//     res.render("category");
-// });
-
-// app.get("/category/multimedia/edit", (req, res) => {
-//     res.render("edit");
-// });
-
-// app.get("/profile", (req, res) => {
-//     res.render("profile");
-// });
-
-// app.get("/profile/edit", (req, res) => {
-//     res.render("profile_edit");
-// });
 // // PG database client/connection setup
 // const { Pool } = require("pg");
 // const dbParams = require("./lib/db.js");
@@ -66,10 +47,10 @@ const todoRouter = require("./routes/todo");
 const categoryRouter = require("./routes/category");
 
 app.get('/home', (req, res) => {
-    res.render('index');
+    res.render('index'); //home page
 });
 
-app.use("/login", loginRouter);
+app.use("/login", loginRouter); //not used atm
 app.use("/logout", logoutRouter);
 app.use("/profile", profileRouter);
 app.use("/todo", todoRouter);

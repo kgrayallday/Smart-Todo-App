@@ -20,9 +20,9 @@ const express = require("express");
 const router = express.Router();
 const userQueries = require("../lib/users-queries");
 
-router.post('/', (req, res) => {
+router.post('/logout', (req, res) => {
     req.session.userID = null;
-    res.redirect('/login');
+    res.redirect('/');
 });
 
 module.exports = router;

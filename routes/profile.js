@@ -20,28 +20,32 @@ const express = require("express");
 const router = express.Router();
 const userQueries = require("../lib/users-queries");
 
-router.get("/", (req, res) => {
-    const ID = req.session.userID;
-    userQueries.getUsersByID(ID).then((response) => {
-        res.render("profile", response);
-    });
-});
+// router.get("/profile", (req, res) => {
+//     const ID = req.session.userID;
+//     userQueries.getUsersByID(ID).then((response) => {
+//         res.render("profile", response);
+//     });
+// });
 
-router.post("/:id/edit", (req, res) => {
-    const name = req.body.name;
-    const email = req.body.email;
-    const password = req.body.password;
-    const profile_url = req.body.profile_url;
-    const id = req.params.id;
-    userQueries
-        .updateUsers(id, name, email, password, profile_url)
-        .then((response) => {
-            res.render("profile", response);
-        });
-});
+// router.post("/:id/edit", (req, res) => {
+//     const name = req.body.name;
+//     const email = req.body.email;
+//     const password = req.body.password;
+//     const profile_url = req.body.profile_url;
+//     const id = req.params.id;
+//     userQueries
+//         .updateUsers(id, name, email, password, profile_url)
+//         .then((response) => {
+//             res.render("profile", response);
+//         });
+// });
 
 // router.get("/", (req, res) => {
 //   res.render('profile',
 // });
+
+router.get('/', (req, res) => {
+  res.render('profile')
+})
 
 module.exports = router;
