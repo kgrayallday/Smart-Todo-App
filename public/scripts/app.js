@@ -20,8 +20,8 @@ $(document).ready(() => {
   $('#multimedia').click(() => {
     window.location.href='/category/multimedia';
   });
-  $('#eating').click(() => {
-    window.location.href='/category/eating';
+  $('#food').click(() => {
+    window.location.href='/category/food';
   });
   $('#reading').click(() => {
     window.location.href='/category/reading';
@@ -43,8 +43,8 @@ $(document).ready(() => {
   $('#footer-multimedia').click(() => {
     window.location.href='/category/multimedia';
   });
-  $('#footer-eating').click(() => {
-    window.location.href='/category/eating';
+  $('#footer-food').click(() => {
+    window.location.href='/category/food';
   });
   $('#footer-reading').click(() => {
     window.location.href='/category/reading';
