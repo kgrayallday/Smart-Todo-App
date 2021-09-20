@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 | Method | Route                | Function                  |
 |--------|:---------------------|:--------------------------|
@@ -14,25 +15,23 @@
 |  GET   |/todo/:category       | list todo's from category |
 |  GET   |/todo/:cat/:id        | info on todo item         |
  */
-
-const { Router } = require("express");
 const express = require("express");
 const router = express.Router();
 const userQueries = require("../lib/users-queries");
 
 router.get("/", (req, res) => {
-    // userQueries.getUsers().then((res) => console.log(res, typeof res)); for testing, please ignore
-    res.render("index");
+  // userQueries.getUsers().then((res) => console.log(res, typeof res)); for testing, please ignore
+  res.render("index");
 });
 
 router.post("/:id", (req, res) => {
-    const name = req.body.name;
-    const email = req.body.email;
-    const password = req.body.password;
-    const profile_url = req.body.profile_url;
-    const id = userQueries.addUsers(name, email, password, profile_url);
-    //add id to the cookie
-    req.session.userID = id;
+  const name = req.body.name;
+  const email = req.body.email;
+  const password = req.body.password;
+  const profile_url = req.body.profile_url;
+  const id = userQueries.addUsers(name, email, password, profile_url);
+  //add id to the cookie
+  req.session.userID = id;
 });
 
 // users = (db) => {
@@ -53,3 +52,25 @@ router.post("/:id", (req, res) => {
 // };
 
 module.exports = router;
+=======
+const { Router } = require("express");
+const express = require("express");
+const router = express.Router();
+const categoryQueries = require("../lib/categories-queries");
+
+router.get("/", (req, res) => {
+    // userQueries.getUsers().then((res) => console.log(res, typeof res)); for testing, please ignore
+    res.render("index");
+});
+
+router.get("/:category", (req, res) => {
+    const userID = req.session.id;
+    categoryQueries
+        .getCategoriesByCategory(req.params.category, userID)
+        .then((response) => {
+            res.render("category", response);
+        });
+});
+
+module.exports = router;
+>>>>>>> Maiduo
