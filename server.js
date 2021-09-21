@@ -63,14 +63,17 @@ const loginRouter = require("./routes/login");
 const logoutRouter = require("./routes/logout");
 const profileRouter = require("./routes/profile");
 const todoRouter = require("./routes/todo");
+const categoryRouter = require("./routes/category");
 
 app.get('/', (req, res) => {
     res.render('index');
 });
+
 app.use("/login", loginRouter);
-app.use("./logout", logoutRouter);
-app.use("./profile", profileRouter);
-app.use("./todo", todoRouter);
+app.use("/logout", logoutRouter);
+app.use("/profile", profileRouter);
+app.use("/todo", todoRouter);
+app.use("/category", categoryRouter);
 
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}`);
