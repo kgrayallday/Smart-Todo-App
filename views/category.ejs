@@ -19,12 +19,13 @@
     <%- include('partials/_header') %>
     <%- include('partials/_back') %>
     <main class='container'>
-      <h1 class='category-title'>Watch list</h1>
+      <h1 class='category-title'>LIST</h1>
       <section class='tasks-container'>
+        <% for (const entry of entries) { %>
         <article class='task'>
           <div class='task-detail'>
-            <p class='time-ago'>10 hours ago</p>
-            <p class='task-name'>Prometheus</p>
+            <p class='time-ago'><%= entry.created_date %></p>
+            <p class='task-name'><%= entry.title %></p>
           <button class='complete-btn'><i class="ri-calendar-check-fill"></i></button>
             <div class='dropdown'>
               <button class='drop-btn'><i class="ri-more-2-line"></i></button>
@@ -42,6 +43,7 @@
             </div>
           </div>
         </article>
+        <% } %>
       </section>
     </main>
     <%- include('partials/_footer') %>

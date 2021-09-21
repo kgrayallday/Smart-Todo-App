@@ -1,34 +1,35 @@
-const { Router } = require("express");
 const express = require("express");
 const router = express.Router();
 const categoryQueries = require("../lib/categories-queries");
+const { getEntriesByCategory } = require('../db/db.js');
 
-// router.get("/", (req, res) => {
-//     // userQueries.getUsers().then((res) => console.log(res, typeof res)); for testing, please ignore
-//     res.render("index");
-// });
-
-// router.get("/category/:id", (req, res) => {
-//     const userID = req.session.id;
-//     categoryQueries
-//         .getCategoriesByCategory(req.params.category, userID)
-//         .then((response) => {
-//             res.render("category", response);
-//         });
-// });
-router.get('/multimedia', (req, res) => {
-  res.render('category')
-})
-router.get('/food', (req, res) => {
-  res.render('category')
-})
-router.get('/reading', (req, res) => {
-  res.render('category')
-})
-router.get('/buying', (req, res) => {
-  res.render('category')
-})
-router.get('/misc', (req, res) => {
-  res.render('category')
-})
+router.get('/:id', (req, res) => {
+  const userID = 1;
+  let category;
+  switch (req.params.id) {
+    case 'misc':
+      category = 1;
+      break;
+    case 'reading':
+      category = 2;
+      break;
+    case 'multimedia':
+      category = 3;
+      break;
+    case 'food':
+      category = 4;
+      break;
+    case 'buying':
+      category = 5;
+      break;
+  }
+  getEntriesByCategory(userID, category)
+    .then(response => {
+      const templateVars = {
+        category: category,
+        entries: response
+      }
+      res.render('category', templateVars);
+    });
+});
 module.exports = router;
