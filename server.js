@@ -46,6 +46,9 @@ const logoutRouter = require('./routes/logout');
 const profileRouter = require('./routes/profile');
 const todoRouter = require('./routes/todo');
 
+app.get("/", (req, res) => {
+  res.render('index.ejs');
+});
 app.use("/login", loginRouter);
 app.use("./logout", logoutRouter);
 app.use("./profile", profileRouter);
