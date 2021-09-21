@@ -1,5 +1,5 @@
 INSERT INTO entries (
-  catergory_id,
+  category_id,
   user_id,
   created_date,
   due_date,
