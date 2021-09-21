@@ -1,4 +1,4 @@
-const { dbParams } = require('../lib/db');
+const { dbParams } = require("../lib/db");
 const { Pool } = require('pg');
 const { insertEntry, insertUser, selectUserInfo, selectEntriesByCategory, updateEntryStatus, updateEntryCategory } = require('./queries/query_strings');
 
@@ -31,7 +31,7 @@ const getEntriesByCategory = (id, category) => {
 // * * * db insert functions * * *
 
 const newEntry = (entry) => {
-  const values = [entry.userId, entry.title, entry.desc, entry.due];
+  const values = [entry.userId, entry.title, entry.desc, entry.due, entry.category_id];
 
   return pool
     .query(insertEntry, values)

@@ -1,4 +1,4 @@
-const insertEntry = `INSERT INTO entries (user_id, title, description, due_date) VALUES ($1, $2, $3, $4) RETURNING *;`;
+const insertEntry = `INSERT INTO entries (user_id, title, description, due_date, category_id) VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
 
 const insertUser = `INSERT INTO users (name, email, password) VALUES ($1, $2, $3);`;
 

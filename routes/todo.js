@@ -15,13 +15,33 @@
 |  GET   |/todo/:cat/:id        | info on todo item         |
  */
 
+const { response } = require("express");
 const express = require("express");
 const router = express.Router();
 const query = require("../db/db");
+const fetchDatatypes = require("../lib/helper/fetchDatatypes");
 
 router.post("/", (req, res) => {
-
+  const task = req.body.new_task;
+  const userID = 1 || req.session.userID;
+  fetchDatatypes(task).then((dataType) => {
+    console.log({ task, dataType, userID });
+    query.newEntry(userID, task, null, null, dataType).then((response) => {
+      console.log(response);
+    });
+  });
 });
+
+/*
+const newEntry = (entry) => {
+  const values = [entry.userId, entry.title, entry.desc, entry.due, entry.category_id];
+
+  return pool
+    .query(insertEntry, values)
+    .then(result => result.rows[0])
+    .catch(error => error.message + ' from db/db.js newEntry');
+};
+*/
 
 // const todoQueries = require("../lib/todos-queries");
 
