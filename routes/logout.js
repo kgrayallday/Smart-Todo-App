@@ -21,8 +21,8 @@ const router = express.Router();
 const userQueries = require("../lib/users-queries");
 
 router.post('/', (req, res) => {
-  req.session.userID = null;
-  res.redirect('/login');
+    req.session.userID = null;
+    res.redirect('/login');
 });
 
 module.exports = router;

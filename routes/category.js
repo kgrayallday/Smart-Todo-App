@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const express = require("express");
 const router = express.Router();
-const userQueries = require("../lib/users-queries");
+const categoryQueries = require("../lib/categories-queries");
 
 router.get("/", (req, res) => {
     // userQueries.getUsers().then((res) => console.log(res, typeof res)); for testing, please ignore
@@ -9,8 +9,12 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:category", (req, res) => {
-    console.log('reached');
-    res.send(req.params.category);
+    const userID = req.session.id;
+    categoryQueries
+        .getCategoriesByCategory(req.params.category, userID)
+        .then((response) => {
+            res.render("category", response);
+        });
 });
 
 module.exports = router;
