@@ -22,9 +22,11 @@ const query = require("../db/db");
 const fetchDatatypes = require("../lib/helper/fetchDatatypes");
 
 router.post("/", (req, res) => {
+  console.log('router post\n');
   const task = req.body.new_task;
   const userID = 1 || req.session.userID;
   fetchDatatypes(task).then((dataType) => {
+    console.log({ dataType });
     let category = 1;
     if (dataType.includes('Books')) {
       category = 2;
@@ -32,12 +34,13 @@ router.post("/", (req, res) => {
       category = 3;
     } else if (dataType.includes('ExpandedFood'))  {
       category = 4;
-    } else if (!dataType.includes(Name)) {
+    } else if (!dataType.includes('Name')) {
       category = 5;
     }
     query.newEntry(userID, task, null, null, dataType).then((response) => {
       console.log(response);
-    });
+    })
+    .catch(error => console.log(error));
   });
 });
 
