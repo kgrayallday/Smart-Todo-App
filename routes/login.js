@@ -21,18 +21,18 @@ const router = express.Router();
 const userQueries = require("../lib/users-queries");
 
 router.get("/", (req, res) => {
-  // userQueries.getUsers().then((res) => console.log(res, typeof res)); for testing, please ignore
-  res.render("index");
+    // userQueries.getUsers().then((res) => console.log(res, typeof res)); for testing, please ignore
+    res.render("index");
 });
 
 router.post("/:id", (req, res) => {
-  const name = req.body.name;
-  const email = req.body.email;
-  const password = req.body.password;
-  const profile_url = req.body.profile_url;
-  const id = userQueries.addUsers(name, email, password, profile_url);
-  //add id to the cookie
-  req.session.userID = id;
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+    const profile_url = req.body.profile_url;
+    const id = userQueries.addUsers(name, email, password, profile_url);
+    //add id to the cookie
+    req.session.userID = id;
 });
 
 // users = (db) => {

@@ -8,6 +8,6 @@ CREATE TABLE categories (
 INSERT INTO categories (name)
 VALUES('uncategorized'),
       ('Books'),
-      ('Films'),
+      ('Media'),
       ('Foods'),
       ('Products');
