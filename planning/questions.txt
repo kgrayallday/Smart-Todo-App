@@ -1,0 +1,2 @@
+Michael's question:
+In db.js, newEntry function only requires userid, description, and due. Don't you need categories_id?
