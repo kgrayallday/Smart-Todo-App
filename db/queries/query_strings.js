@@ -8,7 +8,7 @@ const selectEntriesByUser = `SELECT * FROM entries JOIN users ON users.id = user
 
 const selectEntriesByCategory = `SELECT * FROM entries JOIN users ON users.id = user_id WHERE users_id = $1 AND category_id = $2;`;
 
-const updateStatus = `UPDATE entries SET status_id = $1 WHERE id = $2;`;
+const updateEntryStatus = `UPDATE entries SET status_id = $1 WHERE id = $2;`;
 
 const updateEntryCategory = `UPDATE entries SET category_id = $1 WHERE id = $2;`;
 
@@ -28,7 +28,7 @@ module.exports = {
   selectUserInfo,
   selectEntriesByUser,
   selectEntriesByCategory,
-  updateStatus,
+  updateEntryStatus,
   updateEntryCategory,
   updateEntryTitle,
   updateEntryDescription,
