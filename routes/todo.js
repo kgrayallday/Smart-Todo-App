@@ -25,7 +25,16 @@ router.post("/", (req, res) => {
   const task = req.body.new_task;
   const userID = 1 || req.session.userID;
   fetchDatatypes(task).then((dataType) => {
-    console.log({ task, dataType, userID });
+    let category = 1;
+    if (dataType.includes('Books')) {
+      category = 2;
+    } else if (dataType.includes('TelevisionProgram') || dataType.includes('Movies')) {
+      category = 3;
+    } else if (dataType.includes('ExpandedFood'))  {
+      category = 4;
+    } else if (!dataType.includes(Name)) {
+      category = 5;
+    }
     query.newEntry(userID, task, null, null, dataType).then((response) => {
       console.log(response);
     });
@@ -33,14 +42,18 @@ router.post("/", (req, res) => {
 });
 
 /*
-const newEntry = (entry) => {
-  const values = [entry.userId, entry.title, entry.desc, entry.due, entry.category_id];
+CREATE TABLE categories (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL
+);
 
-  return pool
-    .query(insertEntry, values)
-    .then(result => result.rows[0])
-    .catch(error => error.message + ' from db/db.js newEntry');
-};
+INSERT INTO categories (name)
+VALUES('uncategorized'),
+      ('Books'),
+      ('Media'),
+      ('Foods'),
+      ('Products');
+
 */
 
 // const todoQueries = require("../lib/todos-queries");
