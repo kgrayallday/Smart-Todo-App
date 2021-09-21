@@ -11,6 +11,7 @@ router.get("/:category", (req, res) => {
   console.log(req.params.category);
   const userID = 1 || req.session.userID;
   query.getEntriesByCategory(userID, req.params.category).then((response) => {
+    console.log(response);
     res.render("category", response);
   });
 });
