@@ -31,12 +31,12 @@
               <button class='drop-btn'><i class="ri-more-2-line"></i></button>
               <div class='drop-menu'>
                 <button class='drop-edit' onClick='edit()'><i class="ri-edit-fill"></i>Edit</button>
-                <form class='drop-delete' action='/delete' method='post'>
+                <form class='drop-delete' action='/category/delete/<%= object.entry_id %>' method='post'>
                   <button class='drop-delete' type='submit'><i class="ri-delete-bin-6-fill"></i>Delete</button>
                 </form>
                 <script>
                   function edit() {
-                    window.location.href="/category/multimedia/edit"
+                    window.location.href="/category/edit/<%= object.entry_id %>"
                   }
                 </script>
               </div>

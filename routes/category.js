@@ -1,9 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {
-  getActiveEntriesByCategory,
-  getUnfinishedEntriesCountById,
-} = require("../db/db");
+const { getActiveEntriesByCategory, updateStatus } = require("../db/db");
 
 module.exports = (db) => {
   router.get("/:category", (req, res) => {
@@ -37,12 +34,12 @@ module.exports = (db) => {
       res.render("category", templateVars);
     });
   });
-  router.get("/multimedia", (req, res) => {
-    res.render("category");
-  });
 
-  router.get("/multimedia/edit", (req, res) => {
-    res.render("edit");
+  router.post("/delete/:entryID", (req, res) => {
+    console.log("reached here **********************");
+    updateStatus(req.params.entryID, 3, db).then((response) => {
+      res.redirect('/');
+    });
   });
   return router;
 };

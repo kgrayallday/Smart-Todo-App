@@ -103,9 +103,10 @@ const newUser = (uname, password, email, db) => {
 // * * *  db update functions * * *
 
 const updateStatus = (entryId, newStatus, db) => {
+  console.log("reached update status ---------------------");
   return db
-    .query(updateEntryStatus, [entryId, newStatus])
-    .then()
+    .query(updateEntryStatus, [newStatus, entryId])
+    .then(res => res.rows)
     .catch(err => err.message  + ' from db/db.js updateStatus');
 }
 

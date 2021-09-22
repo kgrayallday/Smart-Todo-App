@@ -8,9 +8,9 @@ const selectEntriesByUser = `SELECT * FROM entries JOIN users ON users.id = user
 
 const selectEntriesByCategory = `SELECT * FROM entries JOIN users ON users.id = user_id WHERE user_id = $1 AND category_id = $2;`;
 
-const selectActiveEntriesByCategory = `SELECT * FROM entries JOIN users ON users.id = user_id WHERE user_id = $1 AND category_id = $2 AND statuses_id = 1`;
+const selectActiveEntriesByCategory = `SELECT *, entries.id AS entry_id FROM entries JOIN users ON users.id = user_id WHERE user_id = $1 AND category_id = $2 AND statuses_id = 1`;
 
-const updateEntryStatus = `UPDATE entries SET status_id = $1 WHERE id = $2;`;
+const updateEntryStatus = `UPDATE entries SET statuses_id = $1 WHERE id = $2 RETURNING entries.statuses_id;`;
 
 const updateEntryCategory = `UPDATE entries SET category_id = $1 WHERE id = $2;`;
 
