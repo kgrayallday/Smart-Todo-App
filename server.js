@@ -11,15 +11,15 @@ const app = express();
 const morgan = require("morgan");
 const cookieSession = require("cookie-session");
 
-const db = require("./lib/db.js");
+// const db = require("./lib/db.js");
 
 const userQueries = require("./lib/users-queries");
 
 // // PG database client/connection setup
-// const { Pool } = require("pg");
-// const dbParams = require("./lib/db.js");
-// const db = new Pool(dbParams);
-// db.connect();
+const { Pool } = require("pg");
+const dbParams = require("./lib/db.js");
+const db = new Pool(dbParams);
+db.connect();
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -50,11 +50,11 @@ app.get('/home', (req, res) => {
     res.render('index'); //home page
 });
 
-app.use("/login", loginRouter); //not used atm
-app.use("/logout", logoutRouter);
-app.use("/profile", profileRouter);
-app.use("/todo", todoRouter);
-app.use("/category", categoryRouter);
+// app.use("/login", loginRouter(db)); //not used atm
+// app.use("/logout", logoutRouter(db));
+// app.use("/profile", profileRouter(db));
+app.use("/todo", todoRouter(db));
+// app.use("/category", categoryRouter(db));
 
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}`);

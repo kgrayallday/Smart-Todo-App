@@ -15,35 +15,42 @@
 |  GET   |/todo/:cat/:id        | info on todo item         |
  */
 
-const { response } = require("express");
 const express = require("express");
 const router = express.Router();
-const query = require("../db/db");
 const fetchDatatypes = require("../lib/helper/fetchDatatypes");
+const  { newEntry } = require("../db/db");
 
-router.post("/", (req, res) => {
-  console.log('router post\n');
-  const task = req.body.new_task;
-  const userID = 1 || req.session.userID;
-  fetchDatatypes(task).then((dataType) => {
-    console.log({ dataType });
-    let category = 1;
-    if (dataType.includes('Books')) {
-      category = 2;
-    } else if (dataType.includes('TelevisionProgram') || dataType.includes('Movies')) {
-      category = 3;
-    } else if (dataType.includes('ExpandedFood'))  {
-      category = 4;
-    } else if (!dataType.includes('Name')) {
-      category = 5;
-    }
-    query.newEntry(userID, task, null, null, dataType).then((response) => {
-      console.log(response);
-    })
-    .catch(error => console.log(error));
+
+module.exports = (db) => {
+  router.post("/", (req, res) => {
+    console.log("router post\n");
+    const task = req.body.new_task;
+    const userID = 1 || req.session.userID;
+    fetchDatatypes(task).then((dataType) => {
+      console.log({ dataType });
+      let category = 1;
+      if (dataType.includes("Books")) {
+        category = 2;
+      } else if (
+        dataType.includes("TelevisionProgram") ||
+        dataType.includes("Movies")
+      ) {
+        category = 3;
+      } else if (dataType.includes("ExpandedFood")) {
+        category = 4;
+      } else if (!dataType.includes("Name")) {
+        category = 5;
+      }
+      console.log("..............Reached Todo POST");
+      newEntry({ userID, task, name: null, title: null, dataType }, db)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => console.log(error));
+    });
   });
-});
-
+  return router;
+};
 /*
 CREATE TABLE categories (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -81,4 +88,4 @@ VALUES('uncategorized'),
 //   res.render('profile',
 // });
 
-module.exports = router;
+// module.exports = router;
