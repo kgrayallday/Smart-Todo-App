@@ -14,7 +14,7 @@ const getUserById = (id, db) => {
       console.log('⭐️ res.rows in getUserFromId query: ', res.rows);
       return res.rows[0];
     })
-    .catch(err => err.message+ ' from db/db.js getUserFromId');
+    .catch(err => console.log(err.message+ ' from db/db.js getUserFromId'));
 };
 
 const getEntriesByCategory = (id, category, db) => {
@@ -33,7 +33,7 @@ const getEntriesByCategory = (id, category, db) => {
 
 const newEntry = (entry, db) => {
   const values = [entry.userId, entry.title, entry.desc, entry.due, entry.category_id];
-  console.log("entry here: ", entry);
+  console.log("entry here: ",entry);
   console.log('<<<<<<<<<<<<<<< entry', values, '>>>>>>>>>>>>>>>>');
   return db
     .query(insertEntry, values)

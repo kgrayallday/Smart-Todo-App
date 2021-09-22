@@ -37,19 +37,27 @@ app.use(
         outputStyle: "expanded",
     })
 );
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["userID"],
+  })
+);
 
 app.use(express.static("public"));
 
+const homeRouter = require("./routes/home");
 const loginRouter = require("./routes/login");
 const logoutRouter = require("./routes/logout");
 const profileRouter = require("./routes/profile");
 const todoRouter = require("./routes/todo");
 const categoryRouter = require("./routes/category");
 
-app.get('/home', (req, res) => {
-    res.render('index'); //home page
+app.get('/', (req, res) => {
+  res.redirect('/home');
 });
 
+app.use("/home", homeRouter(db));
 // app.use("/login", loginRouter(db)); //not used atm
 // app.use("/logout", logoutRouter(db));
 // app.use("/profile", profileRouter(db));
