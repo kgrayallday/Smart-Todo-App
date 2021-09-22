@@ -1,4 +1,4 @@
-const { dbParams } = require("../lib/db");
+// const { dbParams } = require("../lib/db");
 // const { Pool } = require('pg');
 const { insertEntry, insertUser, selectUserInfo, selectEntriesByCategory, updateEntryStatus, updateEntryCategory } = require('./queries/query_strings');
 // console.log("<<<<<<<<<<<<<<<<", dbParams);
@@ -33,7 +33,8 @@ const getEntriesByCategory = (id, category, db) => {
 
 const newEntry = (entry, db) => {
   const values = [entry.userId, entry.title, entry.desc, entry.due, entry.category_id];
-
+  console.log("entry here: ", entry);
+  console.log('<<<<<<<<<<<<<<< entry', values, '>>>>>>>>>>>>>>>>');
   return db
     .query(insertEntry, values)
     .then(result => {

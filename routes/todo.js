@@ -24,9 +24,9 @@ const  { newEntry } = require("../db/db");
 module.exports = (db) => {
   router.post("/", (req, res) => {
     console.log("router post\n");
-    const task = req.body.new_task;
-    const userID = 1 || req.session.userID;
-    fetchDatatypes(task).then((dataType) => {
+    const title = req.body.new_task;
+    const userId = 1 || req.session.userID;
+    fetchDatatypes(title).then((dataType) => {
       console.log({ dataType });
       let category = 1;
       if (dataType.includes("Books")) {
@@ -42,8 +42,9 @@ module.exports = (db) => {
         category = 5;
       }
       console.log("..............Reached Todo POST");
-      newEntry({ userID, task, name: null, title: null, dataType }, db)
+      newEntry({ userId, title, name: null, category_id: category }, db)
         .then((response) => {
+          console.log("Response: ", { userId, title, name: null, something: null, category_id: category });
           console.log(response);
         })
         .catch((error) => console.log(error));

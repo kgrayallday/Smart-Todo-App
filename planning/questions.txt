@@ -1,2 +1,5 @@
 Michael's question:
 In db.js, newEntry function only requires userid, description, and due. Don't you need categories_id?
+
+There is only on input for entries in index.ejs but there are multiple data needed to put the entry in SQL database? What to do? (No POST?
+Where to redirect after POST

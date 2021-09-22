@@ -10,7 +10,7 @@ edit.ejs
 index.ejs
   - 5 buttons should redirect to /category/:id
   - action /todo method /post (adds new to-do item)
-  (Then what redirect where? - Mai Duo);
+  (Then redirects where? - Mai Duo);
 
 profile_edit.ejs
   - action /profile method /post (changes profile fName / lName / email)
