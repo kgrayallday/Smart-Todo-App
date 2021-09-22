@@ -19,6 +19,7 @@ $btn-color: #3895ff;
   width: 100%;
   border-style: solid;
   border-radius: 64px;
+  margin: 15px;
 }
 .task:hover {
   box-shadow: 5px 5px #c8cae3;
@@ -43,6 +44,15 @@ $btn-color: #3895ff;
 }
 .task-detail > button:hover {
   color: #3895ff;
+}
+.complete-form {
+  border: none;
+}
+.complete-btn {
+  border: none;
+}
+.complete-btn:hover {
+  color: $btn-color;
 }
 .dropdown {
   margin: 15px;
