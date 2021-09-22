@@ -6,6 +6,7 @@ const {
   updateTitle,
   getCategoryIdByEntryId,
   getTitleByEntryId,
+  updateCategory,
 } = require("../db/db");
 
 module.exports = (db) => {
@@ -58,7 +59,7 @@ module.exports = (db) => {
     getTitleByEntryId(req.params.entryID, db).then((response) => {
       const templateVars = {
         entryID: req.params.entryID,
-        title: response.title
+        title: response.title,
       };
       res.render("edit", templateVars);
     });
@@ -73,16 +74,23 @@ module.exports = (db) => {
         getCategoryIdByEntryId(req.params.entryID, db)
       );
     } else if (req.body.option === "Miscellaneous") {
-      newCategoryID = 1;
+      newCategoryID = Promise.resolve(1);
     } else if (req.body.option === "Books") {
-      newCategoryID = 2;
+      newCategoryID = Promise.resolve(2);
     } else if (req.body.option === "Multimedia") {
-      newCategoryID = 3;
+      newCategoryID = Promise.resolve(3);
     } else if (req.body.option === "Food") {
-      newCategoryID = 4;
+      newCategoryID = Promise.resolve(4);
     } else if (req.body.option === "Shopping") {
-      newCategoryID = 5;
+      newCategoryID = Promise.resolve(5);
     }
+
+    newCategoryID
+      .then((newCategoryID) =>
+        updateCategory(req.params.entryID, newCategoryID, db)
+      )
+      .then(updateTitle(req.params.entryID, req.body.text, db))
+      .then(res.redirect("/"));
   });
 
   return router;

@@ -167,7 +167,7 @@ const updateStatus = (entryId, newStatus, db) => {
 
 const updateCategory = (entryId, newCategory, db) => {
   return db
-    .query(updateEntryCategory, [entryId, newCategory])
+    .query(updateEntryCategory, [newCategory, entryId])
     .then()
     .catch((err) => err.message + " from db/db.js updateCategory");
 };
