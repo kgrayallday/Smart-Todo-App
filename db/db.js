@@ -1,6 +1,6 @@
 // const { dbParams } = require("../lib/db");
 // const { Pool } = require('pg');
-const { insertEntry, insertUser, selectUserInfo, selectEntriesByCategory, updateEntryStatus, updateEntryCategory } = require('./queries/query_strings');
+const { insertEntry, insertUser, selectUserInfo, selectEntriesByCategory, updateEntryStatus, updateEntryCategory, completedEntries, unfinishedEntries, selectUserCreatedDate } = require('./queries/query_strings');
 // console.log("<<<<<<<<<<<<<<<<", dbParams);
 // const pool = new Pool({dbParams});
 
@@ -9,9 +9,9 @@ const { insertEntry, insertUser, selectUserInfo, selectEntriesByCategory, update
 
 const getUserById = (id, db) => {
   return db
-    .query(selectUserInfo, id)
+    .query(selectUserInfo, [id])
     .then(res => {
-      console.log('⭐️ res.rows in getUserFromId query: ', res.rows);
+      // console.log('⭐️ res.rows in getUserFromId query: ', res.rows);
       return res.rows[0];
     })
     .catch(err => console.log(err.message+ ' from db/db.js getUserFromId'));
@@ -27,13 +27,42 @@ const getEntriesByCategory = (id, category, db) => {
     .catch(err => err.message + ' from db/db.js getEntriesByCategory');
 };
 
+const getCompletedEntriesById = (id, db) => {
+  return db
+  .query(completedEntries, [id])
+  .then(res => {
+    console.log('completedTasks:' , res.rows);
+    return res.rows;
+  })
+  .catch(err => console.log(err.message+ ' from db/db.js getCompletedEntriesById'));
+}
+
+const getUnfinishedEntriesById = (id, db) => {
+  return db
+  .query(unfinishedEntries, [id])
+  .then(res => {
+    console.log('UnfinishedTasks:' , res.rows);
+    return res.rows;
+  })
+  .catch(err => console.log(err.message+ ' from db/db.js getUnfinishedEntriesById'));
+}
+
+const getUserCreationDate = (id, db) => {
+  return db
+  .query(selectUserCreatedDate, [id])
+  .then(res => {
+    console.log('User creation Date: ' , res.rows[0]);
+    return res.rows[0];
+  })
+  .catch(err => console.log(err.message+ ' from db/db.js getUserCreationDate'));
+}
 // Do we need a "getAllEntriesById" function?
 
 // * * * db insert functions * * *
 
 const newEntry = (entry, db) => {
   const values = [entry.userId, entry.title, entry.desc, entry.due, entry.category_id];
-  console.log("entry here: ",entry);
+  console.log("entry here: ", entry);
   console.log('<<<<<<<<<<<<<<< entry', values, '>>>>>>>>>>>>>>>>');
   return db
     .query(insertEntry, values)
@@ -73,5 +102,8 @@ module.exports = {
   newEntry,
   newUser,
   updateStatus,
-  updateCategory
+  updateCategory,
+  getCompletedEntriesById,
+  getUnfinishedEntriesById,
+  getUserCreationDate
 };

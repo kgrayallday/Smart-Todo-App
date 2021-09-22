@@ -1,51 +1,30 @@
-/*
-| Method | Route                | Function                  |
-|--------|:---------------------|:--------------------------|
-|  GET   |/                     | Home/Root                 |
-|  GET   |/login                | login page                |
-|  POST  |/login/:id            | post log in credentials   |
-|  POST  |/logout               | logs user out             |
-|  GET   |/profile              | view user profile         |
-|  POST  |/profile/:id/edit     | view user profile         |
-|  GET   |/todo                 | main page of all cats     |
-|  POST  |/todo/:id             | individual todo           |
-|  POST  |/todo/:cat/:id/edit   | edits todo                |
-|  POST  |/todo/:cat/:id/delete | delete todo               |
-|  GET   |/todo/:category       | list todo's from category |
-|  GET   |/todo/:cat/:id        | info on todo item         |
- */
-
-const { Router } = require("express");
 const express = require("express");
 const router = express.Router();
-const userQueries = require("../lib/users-queries");
+const { getUserById, getCompletedEntriesById, getUnfinishedEntriesById, getUserCreationDate  } = require("../db/db");
 
-// router.get("/profile", (req, res) => {
-//     const ID = req.session.userID;
-//     userQueries.getUsersByID(ID).then((response) => {
-//         res.render("profile", response);
-//     });
-// });
+module.exports = (db) => {
+  router.get("/", (req, res) => {
+    console.log("cookie id: ", req.session.userID);
+    const user = Promise.resolve(getUserById(req.session ? req.session.userID : 1, db));
+    const completedEntries = Promise.resolve(getCompletedEntriesById(req.session ? req.session.userID : 1, db));
+    const unfinishedEntries = Promise.resolve(getUnfinishedEntriesById(req.session ? req.session.userID : 1, db));
+    const userCreatedDate = Promise.resolve(getUserCreationDate(req.session ? req.session.userID : 1, db));
+    Promise.all([user, completedEntries, unfinishedEntries, userCreatedDate]).then((values) => {
+       const user = values[0];
+       const completedEntries = values[1];
+       const unfinishedEntries = values[2];
+       const userCreatedDate = values[3];
+       const templateVars = {
+         email: user.email,
+         name: user.name,
+         completedEntries: completedEntries,
+         unfinishedEntries: unfinishedEntries,
+         userCreatedDate: userCreatedDate.user_creation_date.toString()
+       }
+       console.log("here here: ", typeof templateVars.userCreatedDate, templateVars.userCreatedDate);
+       res.render('profile', templateVars)
+    });
 
-// router.post("/:id/edit", (req, res) => {
-//     const name = req.body.name;
-//     const email = req.body.email;
-//     const password = req.body.password;
-//     const profile_url = req.body.profile_url;
-//     const id = req.params.id;
-//     userQueries
-//         .updateUsers(id, name, email, password, profile_url)
-//         .then((response) => {
-//             res.render("profile", response);
-//         });
-// });
-
-// router.get("/", (req, res) => {
-//   res.render('profile',
-// });
-
-router.get('/', (req, res) => {
-  res.render('profile')
-})
-
-module.exports = router;
+  });
+  return router;
+};

@@ -60,7 +60,7 @@ app.get('/', (req, res) => {
 app.use("/home", homeRouter(db));
 // app.use("/login", loginRouter(db)); //not used atm
 // app.use("/logout", logoutRouter(db));
-// app.use("/profile", profileRouter(db));
+app.use("/profile", profileRouter(db));
 app.use("/todo", todoRouter(db));
 // app.use("/category", categoryRouter(db));
 

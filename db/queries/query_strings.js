@@ -22,6 +22,14 @@ const updateEntryCompletedDate = `UPDATE entries SET completed_date = $1 WHERE $
 
 const deleteEntry = `DELETE FROM entries WHERE id = $1 RETURNING id`;
 
+const completedEntries = `SELECT entries.id, entries.title FROM entries JOIN users ON users.id = user_id WHERE users.id = $1 AND statuses_id = 2 ORDER BY entries.id DESC LIMIT 5`;
+
+const unfinishedEntries = `SELECT entries.id, entries.title FROM entries JOIN users ON users.id = user_id WHERE users.id = $1 AND statuses_id = 1 ORDER BY entries.id DESC LIMIT 5`;
+
+const selectUserCreatedDate = `SELECT min(created_date) AS user_creation_date FROM entries JOIN users ON users.id = entries.user_id WHERE users.id = $1;`
+
+const selectUnfinishedEntriesCount = `SELECT count(*) AS unfinished_entries_count  FROM entries JOIN users ON users.id = user_id WHERE users.id = $1 AND statuses_id = 1;`
+
 module.exports = {
   insertEntry,
   insertUser,
@@ -34,4 +42,9 @@ module.exports = {
   updateEntryDescription,
   updateEntryDueDate,
   updateEntryCompletedDate,
-  deleteEntry };
+  deleteEntry,
+  completedEntries,
+  unfinishedEntries,
+  selectUserCreatedDate,
+  selectUnfinishedEntriesCount
+};
