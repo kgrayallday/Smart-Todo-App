@@ -19,14 +19,15 @@
     <%- include('partials/_header') %>
     <%- include('partials/_back') %>
     <main class='container'>
-      <form class='todo-edit' action='/edit' method='post'>
-        <input type='text' id='todo-name' placeholder="ITEM NAME">
+      <form class='todo-edit' action='/category/edit/<%= entryID %>' method='post'>
+        <input type='text' name='text' id='todo-name' value='<%= title %>' >
         <select id='category' name='option'>
           <option disabled selected value>-- SELECT A CATEGORY --</option>
           <option value="Multimedia">Multimedia</option>
           <option value="Food">Food</option>
           <option value="Books">Books</option>
           <option value="Shopping">Shopping</option>
+          <option value="Miscellaneous">Miscellaneous</option>
         </select>
         <button type='submit'>EDIT</button>
       </form>

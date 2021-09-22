@@ -14,7 +14,7 @@ const updateEntryStatus = `UPDATE entries SET statuses_id = $1 WHERE id = $2 RET
 
 const updateEntryCategory = `UPDATE entries SET category_id = $1 WHERE id = $2;`;
 
-const updateEntryTitle = `UPDATE entries SET title = $1 WHERE id = $2;`;
+const updateEntryTitle = `UPDATE entries SET title = $1 WHERE id = $2 RETURNING entries.title;`;
 
 const updateEntryDescription = `UPDATE entries SET description = $1 WHERE id = $2;`;
 
@@ -24,13 +24,19 @@ const updateEntryCompletedDate = `UPDATE entries SET completed_date = $1 WHERE $
 
 const deleteEntry = `DELETE FROM entries WHERE id = $1 RETURNING id`;
 
+/*------------------------------- Strings below created by Michael ------------------------------*/
+
 const completedEntries = `SELECT entries.id, entries.title FROM entries JOIN users ON users.id = user_id WHERE users.id = $1 AND statuses_id = 2 ORDER BY entries.id DESC LIMIT 5`;
 
 const unfinishedEntries = `SELECT entries.id, entries.title FROM entries JOIN users ON users.id = user_id WHERE users.id = $1 AND statuses_id = 1 ORDER BY entries.id DESC LIMIT 5`;
 
-const selectUserCreatedDate = `SELECT min(created_date) AS user_creation_date FROM entries JOIN users ON users.id = entries.user_id WHERE users.id = $1;`
+const selectUserCreatedDate = `SELECT min(created_date) AS user_creation_date FROM entries JOIN users ON users.id = entries.user_id WHERE users.id = $1;`;
 
-const selectUnfinishedEntriesCount = `SELECT count(*) AS unfinished_entries_count  FROM entries JOIN users ON users.id = user_id WHERE users.id = $1 AND statuses_id = 1;`
+const selectUnfinishedEntriesCount = `SELECT count(*) AS unfinished_entries_count  FROM entries JOIN users ON users.id = user_id WHERE users.id = $1 AND statuses_id = 1;`;
+
+const selectCategoryByEntryId = `SELECT category_id FROM entries WHERE id = $1;`;
+
+const selectTitleByEntryId = `SELECT title FROM entries WHERE id = $1;`;
 
 module.exports = {
   insertEntry,
@@ -49,5 +55,7 @@ module.exports = {
   unfinishedEntries,
   selectUserCreatedDate,
   selectUnfinishedEntriesCount,
-  selectActiveEntriesByCategory
+  selectActiveEntriesByCategory,
+  selectCategoryByEntryId,
+  selectTitleByEntryId
 };

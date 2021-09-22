@@ -1,6 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const { getActiveEntriesByCategory, updateStatus } = require("../db/db");
+const {
+  getActiveEntriesByCategory,
+  updateStatus,
+  updateTitle,
+  getCategoryIdByEntryId,
+  getTitleByEntryId,
+} = require("../db/db");
 
 module.exports = (db) => {
   router.get("/:category", (req, res) => {
@@ -49,10 +55,34 @@ module.exports = (db) => {
   });
 
   router.get("/edit/:entryID", (req, res) => {
-    const templateVars = {
-      entryID: req.params.entryID,
-    };
-    res.render("edit", templateVars);
+    getTitleByEntryId(req.params.entryID, db).then((response) => {
+      const templateVars = {
+        entryID: req.params.entryID,
+        title: response.title
+      };
+      res.render("edit", templateVars);
+    });
+  });
+
+  router.post("/edit/:entryID", (req, res) => {
+    console.log(req.body);
+
+    let newCategoryID;
+    if (!req.body.option) {
+      newCategoryID = Promise.resolve(
+        getCategoryIdByEntryId(req.params.entryID, db)
+      );
+    } else if (req.body.option === "Miscellaneous") {
+      newCategoryID = 1;
+    } else if (req.body.option === "Books") {
+      newCategoryID = 2;
+    } else if (req.body.option === "Multimedia") {
+      newCategoryID = 3;
+    } else if (req.body.option === "Food") {
+      newCategoryID = 4;
+    } else if (req.body.option === "Shopping") {
+      newCategoryID = 5;
+    }
   });
 
   return router;
