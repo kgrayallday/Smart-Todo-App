@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>SMART TO-DO</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <!-- EXTERNAL CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -16,27 +22,42 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
   <body>
-    <%- include('partials/_header') %>
-    <%- include('partials/_back') %>
-    <main class='container'>
-      <h1 class='category-title'>Watch list</h1>
+    <%- include('partials/_header') %> <%- include('partials/_back') %>
+    <main class="container">
+      <h1 class="category-title">Watch list</h1>
       <% for (const object of objects) { %>
-      <section class='tasks-container'>
-        <article class='task'>
-          <div class='task-detail'>
-            <p class='time-ago'><%= object.created_date.toString() %></p>
-            <p class='task-name'><%= object.title %></p>
-          <button class='complete-btn'><i class="ri-calendar-check-fill"></i></button>
-            <div class='dropdown'>
-              <button class='drop-btn'><i class="ri-more-2-line"></i></button>
-              <div class='drop-menu'>
-                <button class='drop-edit' onClick='edit()'><i class="ri-edit-fill"></i>Edit</button>
-                <form class='drop-delete' action='/category/delete/<%= object.entry_id %>' method='post'>
-                  <button class='drop-delete' type='submit'><i class="ri-delete-bin-6-fill"></i>Delete</button>
+      <section class="tasks-container">
+        <article class="task">
+          <div class="task-detail">
+            <p class="time-ago"><%= object.created_date.toString() %></p>
+            <p class="task-name"><%= object.title %></p>
+            <form
+              action="/category/complete/<%= object.entry_id %>"
+              method="POST"
+            >
+              <button class="complete-btn">
+                <i class="ri-calendar-check-fill"></i>
+              </button>
+            </form>
+            <div class="dropdown">
+              <button class="drop-btn"><i class="ri-more-2-line"></i></button>
+              <div class="drop-menu">
+                <button class="drop-edit" onClick="edit()">
+                  <i class="ri-edit-fill"></i>Edit
+                </button>
+                <form
+                  class="drop-delete"
+                  action="/category/delete/<%= object.entry_id %>"
+                  method="post"
+                >
+                  <button class="drop-delete" type="submit">
+                    <i class="ri-delete-bin-6-fill"></i>Delete
+                  </button>
                 </form>
                 <script>
                   function edit() {
-                    window.location.href="/category/edit/<%= object.entry_id %>"
+                    window.location.href =
+                      "/category/edit/<%= object.entry_id %>";
                   }
                 </script>
               </div>

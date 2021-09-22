@@ -38,8 +38,22 @@ module.exports = (db) => {
   router.post("/delete/:entryID", (req, res) => {
     console.log("reached here **********************");
     updateStatus(req.params.entryID, 3, db).then((response) => {
-      res.redirect('/');
+      res.redirect("/");
     });
   });
+
+  router.post("/complete/:entryID", (req, res) => {
+    updateStatus(req.params.entryID, 2, db).then((response) => {
+      res.redirect("/");
+    });
+  });
+
+  router.get("/edit/:entryID", (req, res) => {
+    const templateVars = {
+      entryID: req.params.entryID,
+    };
+    res.render("edit", templateVars);
+  });
+
   return router;
 };

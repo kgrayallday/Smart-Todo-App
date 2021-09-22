@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const fetchDatatypes = require("../lib/helper/fetchDatatypes");
-const  { newEntry } = require("../db/db");
-
+const { newEntry } = require("../db/db");
 
 module.exports = (db) => {
   router.post("/", (req, res) => {
@@ -12,7 +11,7 @@ module.exports = (db) => {
     fetchDatatypes(title).then((dataType) => {
       console.log({ dataType });
       let category = 1;
-      if (dataType.includes("Books")) {
+      if (dataType.includes("Book")) {
         category = 2;
       } else if (
         dataType.includes("TelevisionProgram") ||
@@ -27,8 +26,8 @@ module.exports = (db) => {
       console.log("..............Reached Todo POST");
       newEntry({ userId, title, name: null, category_id: category }, db)
         .then((response) => {
-          console.log("Response: ", { userId, title, name: null, something: null, category_id: category });
-          console.log(response);
+          console.log("todo response: ", response);
+          res.redirect("/");
         })
         .catch((error) => console.log(error));
     });
