@@ -20,11 +20,12 @@
     <%- include('partials/_back') %>
     <main class='container'>
       <h1 class='category-title'>Watch list</h1>
+      <% for (const object of objects) { %>
       <section class='tasks-container'>
         <article class='task'>
           <div class='task-detail'>
-            <p class='time-ago'>10 hours ago</p>
-            <p class='task-name'>Prometheus</p>
+            <p class='time-ago'><%= object.created_date.toString() %></p>
+            <p class='task-name'><%= object.title %></p>
           <button class='complete-btn'><i class="ri-calendar-check-fill"></i></button>
             <div class='dropdown'>
               <button class='drop-btn'><i class="ri-more-2-line"></i></button>
@@ -43,6 +44,7 @@
           </div>
         </article>
       </section>
+      <% } %>
     </main>
     <%- include('partials/_footer') %>
   </body>

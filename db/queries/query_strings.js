@@ -4,9 +4,11 @@ const insertUser = `INSERT INTO users (name, email, password) VALUES ($1, $2, $3
 
 const selectUserInfo = `SELECT * FROM users WHERE id = $1;`;
 
-const selectEntriesByUser = `SELECT * FROM entries JOIN users ON users.id = users_id WHERE users_id = $1;`;
+const selectEntriesByUser = `SELECT * FROM entries JOIN users ON users.id = user_id WHERE user_id = $1;`;
 
-const selectEntriesByCategory = `SELECT * FROM entries JOIN users ON users.id = user_id WHERE users_id = $1 AND category_id = $2;`;
+const selectEntriesByCategory = `SELECT * FROM entries JOIN users ON users.id = user_id WHERE user_id = $1 AND category_id = $2;`;
+
+const selectActiveEntriesByCategory = `SELECT * FROM entries JOIN users ON users.id = user_id WHERE user_id = $1 AND category_id = $2 AND statuses_id = 1`;
 
 const updateEntryStatus = `UPDATE entries SET status_id = $1 WHERE id = $2;`;
 
@@ -46,5 +48,6 @@ module.exports = {
   completedEntries,
   unfinishedEntries,
   selectUserCreatedDate,
-  selectUnfinishedEntriesCount
+  selectUnfinishedEntriesCount,
+  selectActiveEntriesByCategory
 };

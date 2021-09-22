@@ -62,7 +62,7 @@ app.use("/home", homeRouter(db));
 // app.use("/logout", logoutRouter(db));
 app.use("/profile", profileRouter(db));
 app.use("/todo", todoRouter(db));
-// app.use("/category", categoryRouter(db));
+app.use("/category", categoryRouter(db));
 
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}`);

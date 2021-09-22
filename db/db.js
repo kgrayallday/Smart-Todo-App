@@ -1,6 +1,6 @@
 // const { dbParams } = require("../lib/db");
 // const { Pool } = require('pg');
-const { insertEntry, insertUser, selectUserInfo, selectEntriesByCategory, updateEntryStatus, updateEntryCategory, completedEntries, unfinishedEntries, selectUserCreatedDate, selectUnfinishedEntriesCount } = require('./queries/query_strings');
+const { insertEntry, insertUser, selectUserInfo, selectEntriesByCategory, updateEntryStatus, updateEntryCategory, completedEntries, unfinishedEntries, selectUserCreatedDate, selectUnfinishedEntriesCount, selectActiveEntriesByCategory } = require('./queries/query_strings');
 // console.log("<<<<<<<<<<<<<<<<", dbParams);
 // const pool = new Pool({dbParams});
 
@@ -25,6 +25,16 @@ const getEntriesByCategory = (id, category, db) => {
       return res.rows;
     })
     .catch(err => err.message + ' from db/db.js getEntriesByCategory');
+};
+
+const getActiveEntriesByCategory = (id, category, db) => {
+  return db
+    .query(selectActiveEntriesByCategory, [id,category])
+    .then(res => {
+      console.log('⭐️ res.rows from getActiveEntriesByCategory Query: ', res.rows);
+      return res.rows;
+    })
+    .catch(err => err.message + ' from db/db.js getActiveEntriesByCategory');
 };
 
 const getCompletedEntriesById = (id, db) => {
@@ -116,5 +126,6 @@ module.exports = {
   getCompletedEntriesById,
   getUnfinishedEntriesById,
   getUserCreationDate,
-  getUnfinishedEntriesCountById
+  getUnfinishedEntriesCountById,
+  getActiveEntriesByCategory
 };

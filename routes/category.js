@@ -1,34 +1,48 @@
-const { Router } = require("express");
 const express = require("express");
 const router = express.Router();
-const categoryQueries = require("../lib/categories-queries");
+const {
+  getActiveEntriesByCategory,
+  getUnfinishedEntriesCountById,
+} = require("../db/db");
 
-// router.get("/", (req, res) => {
-//     // userQueries.getUsers().then((res) => console.log(res, typeof res)); for testing, please ignore
-//     res.render("index");
-// });
+module.exports = (db) => {
+  router.get("/:category", (req, res) => {
+    let categoryId;
+    if (req.params.category === "misc") {
+      categoryId = 1;
+    } else if (req.params.category === "reading") {
+      categoryId = 2;
+    } else if (req.params.category === "multimedia") {
+      categoryId = 3;
+    } else if (req.params.category === "food") {
+      categoryId = 4;
+    } else if (req.params.category === "buying") {
+      categoryId = 5;
+    }
 
-// router.get("/category/:id", (req, res) => {
-//     const userID = req.session.id;
-//     categoryQueries
-//         .getCategoriesByCategory(req.params.category, userID)
-//         .then((response) => {
-//             res.render("category", response);
-//         });
-// });
-router.get('/multimedia', (req, res) => {
-  res.render('category')
-})
-router.get('/food', (req, res) => {
-  res.render('category')
-})
-router.get('/reading', (req, res) => {
-  res.render('category')
-})
-router.get('/buying', (req, res) => {
-  res.render('category')
-})
-router.get('/misc', (req, res) => {
-  res.render('category')
-})
-module.exports = router;
+    const entries = Promise.resolve(
+      getActiveEntriesByCategory(
+        req.session ? req.session.userID : 1,
+        categoryId,
+        db
+      )
+    );
+
+    Promise.all([entries]).then((values) => {
+      objects = values[0];
+      templateVars = {
+        objects: objects,
+      };
+      console.log(templateVars);
+      res.render("category", templateVars);
+    });
+  });
+  router.get("/multimedia", (req, res) => {
+    res.render("category");
+  });
+
+  router.get("/multimedia/edit", (req, res) => {
+    res.render("edit");
+  });
+  return router;
+};
