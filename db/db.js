@@ -1,6 +1,6 @@
 // const { dbParams } = require("../lib/db");
 // const { Pool } = require('pg');
-const { insertEntry, insertUser, selectUserInfo, selectEntriesByCategory, updateEntryStatus, updateEntryCategory, completedEntries, unfinishedEntries, selectUserCreatedDate } = require('./queries/query_strings');
+const { insertEntry, insertUser, selectUserInfo, selectEntriesByCategory, updateEntryStatus, updateEntryCategory, completedEntries, unfinishedEntries, selectUserCreatedDate, selectUnfinishedEntriesCount } = require('./queries/query_strings');
 // console.log("<<<<<<<<<<<<<<<<", dbParams);
 // const pool = new Pool({dbParams});
 
@@ -56,6 +56,16 @@ const getUserCreationDate = (id, db) => {
   })
   .catch(err => console.log(err.message+ ' from db/db.js getUserCreationDate'));
 }
+
+const getUnfinishedEntriesCountById = (id, db) => {
+  return db
+  .query(selectUnfinishedEntriesCount, [id])
+  .then(res => {
+    console.log('UnfinishedTasks:' , res.rows[0]);
+    return res.rows[0];
+  })
+  .catch(err => console.log(err.message+ ' from db/db.js getUnfinishedEntriesById'));
+}
 // Do we need a "getAllEntriesById" function?
 
 // * * * db insert functions * * *
@@ -105,5 +115,6 @@ module.exports = {
   updateCategory,
   getCompletedEntriesById,
   getUnfinishedEntriesById,
-  getUserCreationDate
+  getUserCreationDate,
+  getUnfinishedEntriesCountById
 };

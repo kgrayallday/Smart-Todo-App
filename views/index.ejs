@@ -29,7 +29,7 @@
       </section>
       <div class='welcome'>
         <h1>Welcome, <%= name %></h1>
-        <p>Current Tasks: 1</p>
+        <p>Current Tasks: <%= unfinishedEntriesCount %></p>
       </div>
         <form class='new-task' method='POST' action='/todo'>
           <input placeholder='Add new task' name='new_task'></input>
