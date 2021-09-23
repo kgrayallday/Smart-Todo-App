@@ -71,7 +71,7 @@ const getUnfinishedEntriesById = (id, db) => {
   return db
     .query(unfinishedEntries, [id])
     .then((res) => {
-      console.log("UnfinishedTasks:", res.rows);
+      // console.log("UnfinishedTasks:", res.rows);
       return res.rows;
     })
     .catch((err) =>

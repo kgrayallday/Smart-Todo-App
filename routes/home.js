@@ -13,7 +13,6 @@ module.exports = (db) => {
 
     Promise.all([user, unfinishedEntriesCount]).then((values) => {
       const user = values[0];
-      console.log("****************user: ", user);
       const unfinishedEntriesCount = values[1];
       const templateVars = {
         name: user.name,
