@@ -26,7 +26,7 @@
     <main class="container">
       <h1 class="profile-title">PERSONAL INFORMATION</h1>
       <ul>
-        <li>Created on: <%= userCreatedDate %></li>
+        <li>Created on: <%= userCreatedDate.toString().slice(0,15) %></li>
         <li>Email: <%= email %></li>
         <li>Tasks Completed:</li>
         <% for(const completedEntry in completedEntries){ %>

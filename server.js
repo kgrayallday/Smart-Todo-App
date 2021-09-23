@@ -48,17 +48,18 @@ const homeRouter = require("./routes/home");
 const profileRouter = require("./routes/profile");
 const todoRouter = require("./routes/todo");
 const categoryRouter = require("./routes/category");
+const loginRouter = require("./routes/login");
 
 app.get('/', (req, res) => {
   res.redirect('/home');
 });
 
 app.use("/home", homeRouter(db));
-// app.use("/login", loginRouter(db)); //not used atm
-// app.use("/logout", logoutRouter(db));
 app.use("/profile", profileRouter(db));
 app.use("/todo", todoRouter(db));
 app.use("/category", categoryRouter(db));
+app.use("/login", loginRouter(db));
+
 
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}`);
