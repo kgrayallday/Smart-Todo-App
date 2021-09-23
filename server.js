@@ -13,8 +13,6 @@ const cookieSession = require("cookie-session");
 
 // const db = require("./lib/db.js");
 
-const userQueries = require("./lib/users-queries");
-
 // // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
@@ -47,8 +45,6 @@ app.use(
 app.use(express.static("public"));
 
 const homeRouter = require("./routes/home");
-const loginRouter = require("./routes/login");
-const logoutRouter = require("./routes/logout");
 const profileRouter = require("./routes/profile");
 const todoRouter = require("./routes/todo");
 const categoryRouter = require("./routes/category");

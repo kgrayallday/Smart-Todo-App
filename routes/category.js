@@ -37,13 +37,11 @@ module.exports = (db) => {
       templateVars = {
         objects: objects,
       };
-      console.log(templateVars);
       res.render("category", templateVars);
     });
   });
 
   router.post("/delete/:entryID", (req, res) => {
-    console.log("reached here **********************");
     updateStatus(req.params.entryID, 3, db).then((response) => {
       res.redirect("/");
     });
@@ -66,8 +64,6 @@ module.exports = (db) => {
   });
 
   router.post("/edit/:entryID", (req, res) => {
-    console.log(req.body);
-
     let newCategoryID;
     if (!req.body.option) {
       newCategoryID = Promise.resolve(
