@@ -13,7 +13,7 @@ module.exports = (db) => {
         category = 2;
       } else if (
         dataType.includes("TelevisionProgram") ||
-        dataType.includes("Movies")
+        dataType.includes("Movie")
       ) {
         category = 3;
       } else if (dataType.includes("ExpandedFood")) {
@@ -23,6 +23,7 @@ module.exports = (db) => {
       }
       newEntry({ userId, title, name: null, category_id: category }, db)
         .then((response) => {
+          console.log(response);
           res.redirect("/");
         })
         .catch((error) => console.log(error));
