@@ -11,17 +11,22 @@ const {
 
 module.exports = (db) => {
   router.get("/:category", (req, res) => {
-    let categoryId;
+    let categoryId, pageTitle;
     if (req.params.category === "misc") {
       categoryId = 1;
+      pageTitle = 'Miscellaneous';
     } else if (req.params.category === "reading") {
       categoryId = 2;
+      pageTitle = 'Books';
     } else if (req.params.category === "multimedia") {
       categoryId = 3;
+      pageTitle = 'Media';
     } else if (req.params.category === "food") {
       categoryId = 4;
+      pageTitle = 'Food';
     } else if (req.params.category === "buying") {
       categoryId = 5;
+      pageTitle = 'Shopping';
     }
 
     const entries = Promise.resolve(
@@ -36,6 +41,7 @@ module.exports = (db) => {
       objects = values[0];
       templateVars = {
         objects: objects,
+        pageTitle
       };
       res.render("category", templateVars);
     });

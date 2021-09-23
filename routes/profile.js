@@ -10,7 +10,6 @@ const {
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    console.log("cookie id: ", req.session.userID);
     const user = Promise.resolve(
       getUserById(req.session ? req.session.userID : 1, db)
     );
@@ -41,11 +40,6 @@ module.exports = (db) => {
         unfinishedEntries: unfinishedEntries,
         userCreatedDate: userCreatedDate.user_creation_date.toString(),
       };
-      console.log(
-        "here here: ",
-        typeof templateVars.userCreatedDate,
-        templateVars.userCreatedDate
-      );
       res.render("profile", templateVars);
     });
   });
@@ -72,7 +66,6 @@ module.exports = (db) => {
       }
       updateUser(name, email, req.params.id, db).then(res.redirect('/'))
     });
-    console.log("reqbody", req.body);
   });
   return router;
 };

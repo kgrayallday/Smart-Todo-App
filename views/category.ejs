@@ -24,12 +24,12 @@
   <body>
     <%- include('partials/_header') %> <%- include('partials/_back') %>
     <main class="container">
-      <h1 class="category-title">Watch list</h1>
+      <h1 class="category-title"><%= pageTitle %></h1>
       <% for (const object of objects) { %>
       <section class="tasks-container">
         <article class="task">
           <div class="task-detail">
-            <p class="time-ago"><%= object.created_date.toString() %></p>
+            <p class="time-ago"><%= object.created_date.toString().slice(0,15) %></p>
             <p class="task-name"><%= object.title %></p>
             <form
               action="/category/complete/<%= object.entry_id %>"

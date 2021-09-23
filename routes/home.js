@@ -4,7 +4,6 @@ const { getUserById, getUnfinishedEntriesCountById } = require("../db/db");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    req.session.userID = 1;
     const user = Promise.resolve(
       getUserById(req.session ? req.session.userID : 1, db)
     ).catch((error) => console.log(error));
@@ -22,13 +21,6 @@ module.exports = (db) => {
       };
       res.render("index", templateVars);
     });
-
-    // .then((response) => {
-    //   const templateVars = {
-    //     name: response.name
-    //   };
-    //   res.render("index", templateVars);
-    // });
   });
   return router;
 };
