@@ -5,7 +5,9 @@ const {
   getCompletedEntriesById,
   getUnfinishedEntriesById,
   getUserCreationDate,
-  updateUser
+  updateUser,
+  getUnfinishedEntriesCountById,
+  getCompletedEntriesCountById
 } = require("../db/db");
 
 module.exports = (db) => {
@@ -14,10 +16,10 @@ module.exports = (db) => {
       getUserById(req.session ? req.session.userID : 1, db)
     );
     const completedEntries = Promise.resolve(
-      getCompletedEntriesById(req.session ? req.session.userID : 1, db)
+      getCompletedEntriesCountById(req.session ? req.session.userID : 1, db)
     );
     const unfinishedEntries = Promise.resolve(
-      getUnfinishedEntriesById(req.session ? req.session.userID : 1, db)
+      getUnfinishedEntriesCountById(req.session ? req.session.userID : 1, db)
     );
     const userCreatedDate = Promise.resolve(
       getUserCreationDate(req.session ? req.session.userID : 1, db)
@@ -28,16 +30,18 @@ module.exports = (db) => {
       unfinishedEntries,
       userCreatedDate,
     ]).then((values) => {
+
       const user = values[0];
       const completedEntries = values[1];
       const unfinishedEntries = values[2];
       const userCreatedDate = values[3];
+      console.log("<<<<<<<<<<<number: ",completedEntries);
       const templateVars = {
         id: user.id,
         email: user.email,
         name: user.name,
-        completedEntries: completedEntries,
-        unfinishedEntries: unfinishedEntries,
+        completedEntries: completedEntries.completed_entries_count,
+        unfinishedEntries: unfinishedEntries.unfinished_entries_count,
         userCreatedDate: userCreatedDate.user_creation_date.toString(),
       };
       res.render("profile", templateVars);

@@ -15,7 +15,8 @@ const {
   selectActiveEntriesByCategory,
   selectCategoryByEntryId,
   selectTitleByEntryId,
-  updateUserNameAndEmailByID
+  updateUserNameAndEmailByID,
+  selectCompletedEntriesCount
 } = require("./queries/query_strings");
 // console.log("<<<<<<<<<<<<<<<<", dbParams);
 // const pool = new Pool({dbParams});
@@ -64,6 +65,18 @@ const getCompletedEntriesById = (id, db) => {
     })
     .catch((err) =>
       console.log(err.message + " from db/db.js getCompletedEntriesById")
+    );
+};
+
+const getCompletedEntriesCountById = (id, db) => {
+  return db
+    .query(selectCompletedEntriesCount, [id])
+    .then((res) => {
+      console.log("UnfinishedTasks:", res.rows[0]);
+      return res.rows[0];
+    })
+    .catch((err) =>
+      console.log(err.message + " from db/db.js getUnfinishedEntriesById")
     );
 };
 
@@ -202,5 +215,6 @@ module.exports = {
   updateTitle,
   getCategoryIdByEntryId,
   getTitleByEntryId,
-  updateUser
+  updateUser,
+  getCompletedEntriesCountById
 };

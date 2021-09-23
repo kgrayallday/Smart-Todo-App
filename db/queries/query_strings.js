@@ -40,6 +40,8 @@ const selectTitleByEntryId = `SELECT title FROM entries WHERE id = $1;`;
 
 const updateUserNameAndEmailByID = `UPDATE users SET name = $1, email = $2 WHERE id = $3 RETURNING name, email`;
 
+const selectCompletedEntriesCount = `SELECT count(*) AS completed_entries_count  FROM entries JOIN users ON users.id = user_id WHERE users.id = $1 AND statuses_id = 2;`;
+
 module.exports = {
   insertEntry,
   insertUser,
@@ -60,5 +62,6 @@ module.exports = {
   selectActiveEntriesByCategory,
   selectCategoryByEntryId,
   selectTitleByEntryId,
-  updateUserNameAndEmailByID
+  updateUserNameAndEmailByID,
+  selectCompletedEntriesCount
 };
