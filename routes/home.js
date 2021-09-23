@@ -1,21 +1,25 @@
 const express = require("express");
 const router = express.Router();
-const  { getUserById, getUnfinishedEntriesCountById } = require("../db/db");
+const { getUserById, getUnfinishedEntriesCountById } = require("../db/db");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    console.log(req.session.userID);
-    const user = Promise.resolve(getUserById(req.session ? req.session.userID : 1, db));
-    const unfinishedEntriesCount = Promise.resolve(getUnfinishedEntriesCountById(req.session ? req.session.userID : 1, db));
+    req.session.userID = 1;
+    const user = Promise.resolve(
+      getUserById(req.session ? req.session.userID : 1, db)
+    ).catch((error) => console.log(error));
+    const unfinishedEntriesCount = Promise.resolve(
+      getUnfinishedEntriesCountById(req.session ? req.session.userID : 1, db)
+    ).catch((error) => console.log(error));
 
     Promise.all([user, unfinishedEntriesCount]).then((values) => {
       const user = values[0];
+      console.log("****************user: ", user);
       const unfinishedEntriesCount = values[1];
       const templateVars = {
         name: user.name,
-        unfinishedEntriesCount: unfinishedEntriesCount.unfinished_entries_count
-      }
-      console.log(templateVars);
+        unfinishedEntriesCount: unfinishedEntriesCount.unfinished_entries_count,
+      };
       res.render("index", templateVars);
     });
 
