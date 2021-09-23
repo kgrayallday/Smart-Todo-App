@@ -14,7 +14,8 @@ const {
   selectUnfinishedEntriesCount,
   selectActiveEntriesByCategory,
   selectCategoryByEntryId,
-  selectTitleByEntryId
+  selectTitleByEntryId,
+  updateUserNameAndEmailByID
 } = require("./queries/query_strings");
 // console.log("<<<<<<<<<<<<<<<<", dbParams);
 // const pool = new Pool({dbParams});
@@ -116,14 +117,14 @@ const getCategoryIdByEntryId = (entryId, db) => {
 
 const getTitleByEntryId = (entryId, db) => {
   return db
-  .query(selectTitleByEntryId, [entryId])
-  .then((res) => {
-    console.log("Title from entryid", res.rows[0]);
-    return res.rows[0];
-  })
-  .catch((err) =>
-    console.log(err.message + " from db/db.js getTitleByEntryId")
-  );
+    .query(selectTitleByEntryId, [entryId])
+    .then((res) => {
+      console.log("Title from entryid", res.rows[0]);
+      return res.rows[0];
+    })
+    .catch((err) =>
+      console.log(err.message + " from db/db.js getTitleByEntryId")
+    );
 };
 // Do we need a "getAllEntriesById" function?
 
@@ -179,6 +180,13 @@ const updateTitle = (entryId, newTitle, db) => {
     .catch((err) => err.message + " from db/db.js updateTitle");
 };
 
+const updateUser = (name, email, userId, db) => {
+  return db
+    .query(updateUserNameAndEmailByID, [name, email, userId])
+    .then((res) => res.rows)
+    .catch((err) => err.message + " from db/db.js updateTitle");
+};
+
 module.exports = {
   getUserById,
   getEntriesByCategory,
@@ -193,5 +201,6 @@ module.exports = {
   getActiveEntriesByCategory,
   updateTitle,
   getCategoryIdByEntryId,
-  getTitleByEntryId
+  getTitleByEntryId,
+  updateUser
 };

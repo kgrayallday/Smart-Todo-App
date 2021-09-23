@@ -19,10 +19,10 @@
     <%- include('partials/_header') %>
     <%- include('partials/_back') %>
     <main class='container'>
-      <form class='profile-edit' action='/profile' method='post'>
-        <input type='text' id='fname' placeholder="FIRST NAME">
-        <input type='text' id='lname' placeholder="LAST NAME">
-        <input type='text' id='email' placeholder="EMAIL">
+      <form class='profile-edit' action='/profile/edit/<%= id %>' method='post'>
+        <input type='text' id='name' name='name' placeholder="NAME">
+        <!-- <input type='text' id='lname' name='lname' placeholder="LAST NAME"> no last name in database -->
+        <input type='text' id='email' name='email' placeholder="EMAIL">
         <button type='submit'>CONFIRM</button>
       </form>
     </main>

@@ -30,16 +30,28 @@
         <li>Email: <%= email %></li>
         <li>Tasks Completed:</li>
         <% for(const completedEntry in completedEntries){ %>
-        <li><p>  <%= completedEntries[completedEntry].title %>  <%= completedEntries[completedEntry].id %></p></li>
+        <li>
+          <p>
+            <%= completedEntries[completedEntry].title %> <%=
+            completedEntries[completedEntry].id %>
+          </p>
+        </li>
         <% } %>
-        <br>
+        <br />
         <li>Unfinished Tasks:</li>
         <% for(const unfinishedEntry in unfinishedEntries){ %>
-          <li><p>  <%= unfinishedEntries[unfinishedEntry].title %>  <%= unfinishedEntries[unfinishedEntry].id %></p></li>
-          <% } %>
+        <li>
+          <p>
+            <%= unfinishedEntries[unfinishedEntry].title %> <%=
+            unfinishedEntries[unfinishedEntry].id %>
+          </p>
+        </li>
+        <% } %>
       </ul>
-      <button class="edit-profile" id="profile-edit">EDIT</button>
-      <form class="logout" action="/logout" method="post">
+      <form class="edit" action="profile/edit/<%= id %>" method="GET" >
+        <button class="edit-profile" id="profile-edit">EDIT</button>
+      </form>
+      <form class="logout" action="/logout" method="GET">
         <button type="submit">LOGOUT</button>
       </form>
     </main>

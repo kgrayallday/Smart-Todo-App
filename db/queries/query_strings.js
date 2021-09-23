@@ -18,7 +18,7 @@ const updateEntryTitle = `UPDATE entries SET title = $1 WHERE id = $2 RETURNING 
 
 const updateEntryDescription = `UPDATE entries SET description = $1 WHERE id = $2;`;
 
-const updateEntryDueDate = `UPDATE entries SET due_date = $1 where id = $2;`;
+const updateEntryDueDate = `UPDATE entries SET due_date = $1 WHERE id = $2;`;
 
 const updateEntryCompletedDate = `UPDATE entries SET completed_date = $1 WHERE $2;`;
 
@@ -37,6 +37,8 @@ const selectUnfinishedEntriesCount = `SELECT count(*) AS unfinished_entries_coun
 const selectCategoryByEntryId = `SELECT category_id FROM entries WHERE id = $1;`;
 
 const selectTitleByEntryId = `SELECT title FROM entries WHERE id = $1;`;
+
+const updateUserNameAndEmailByID = `UPDATE users SET name = $1, email = $2 WHERE id = $3 RETURNING name, email`;
 
 module.exports = {
   insertEntry,
@@ -57,5 +59,6 @@ module.exports = {
   selectUnfinishedEntriesCount,
   selectActiveEntriesByCategory,
   selectCategoryByEntryId,
-  selectTitleByEntryId
+  selectTitleByEntryId,
+  updateUserNameAndEmailByID
 };

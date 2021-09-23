@@ -48,3 +48,21 @@ $primary-color: #2699FB;
   font-weight: bold;
   font-size: 12px;
 }
+
+/******************************** CSS below is added by Michael so the edit button in profile.js works ****************************/
+.edit {
+  width: 80%;
+  margin-top: 30px;
+}
+
+.edit button {
+  width: 100%;
+  height: 48px;
+  color: #FFFF;
+  background-color: #2699FB;
+  border: none;
+  border-radius: 12px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+}
