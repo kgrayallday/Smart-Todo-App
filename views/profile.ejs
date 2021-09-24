@@ -29,19 +29,8 @@
       <ul>
         <li>Created on: <%= userCreatedDate.toString().slice(0,15) %></li>
         <li>Email: <%= email %></li>
-        <li>Tasks Completed:</li>
-        <li>
-          <p>
-            <%= completedEntries %>
-          </p>
-        </li>
-        <br />
-        <li>Unfinished Tasks:</li>
-        <li>
-          <p>
-            <%= unfinishedEntries %>
-          </p>
-        </li>
+        <li>Tasks Completed: <%= completedEntries %></li>
+        <li>Unfinished Tasks: <%= unfinishedEntries %></li>
       </ul>
       <form class="edit" action="profile/edit/<%= id %>" method="GET" >
         <button class="edit-profile" id="profile-edit">EDIT</button>
