@@ -10,7 +10,6 @@ module.exports = (db) => {
     fetchDatatypes(title).then(category =>
       newEntry({ userId, title, name: null, category_id: category }, db)
         .then((response) => {
-          console.log(response);
           res.redirect("/");
         })
         .catch((error) => console.log(error))
